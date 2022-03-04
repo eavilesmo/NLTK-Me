@@ -5,28 +5,27 @@
 # The GUI_Constants file contains all the constants, variables and
 # dictionaries needed for the GUI.
 
+# -----------------------------------------------------------------------------
 
 # Miscellaneous
 SG_THEME = "LightBlue3"
 TITLE_WIN = "NLTK-Me!"
-WELCOME_TEXT_EN = "Welcome to NLTK-Me!\n" \
-                  "Which language would you like to chose?"
-WELCOME_TEXT_ES = "¡Bienvenido/a a NLTK-Me!\n¿Qué idioma quieres escoger?"
+WELCOME_TEXT_EN = "Hello! Welcome to NLTK-Me!\n" \
+                  "Which language would you like to choose?"
+WELCOME_TEXT_ES = "¡Hola! Te damos la bienvenida a NLTK-Me!\n" \
+                  "¿Qué idioma quieres escoger?"
 ENG_BUT = "English"
 ENG_BUT_KEY = "EN_lang"
 SPA_BUT = "Español"
 SPA_BUT_KEY = "ES_lang"
 
 # Size of elements
-
-# SIZE_TEXT = (40, 2)
 SIZE_BUTTON = (6, 1)
 SIZE_TEXT_L = (34, 1)
 SIZE_TEXT_S = (6, 2)
 SIZE_INFORMATION = (25, 17)
 
 # Key names for the elements
-
 KEY_BROWSE = "browse"
 KEY_TEXT_BROWSE = "text_browse"
 FILE_TYPES = (("Text Files", "*.txt"),)
@@ -51,7 +50,6 @@ KEY_INFORMATION = "information"
 
 
 # Dictionary for making the GUI bilingual
-
 dict_EN = {
     # Descriptions
     "general_description": "Welcome to NLTK-Me!\nThis is a program based "

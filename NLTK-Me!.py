@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 
 # The NLTK-Me! file executes the GUI and all the functionalities of
-# the program.
+# the application.
 
 # -----------------------------------------------------------------------------
 # Imports
@@ -12,7 +12,7 @@
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
 from Text_Processing_Tools import *
-import GUI_Constants
+from GUI_Constants import *
 
 # -----------------------------------------------------------------------------
 # Definition of functions
