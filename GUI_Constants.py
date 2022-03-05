@@ -58,10 +58,10 @@ dict_EN = {
                               "will see here general information about it.",
     "text_browse": "Please select a file to work with",
     "tok_text_description": "With Text Tokenizer, you can tokenize (split) "
-                            "a text into sentences. The sentences are split "
-                            "based on full stops.\nThis option will create a "
-                            "file with the result. You can choose the path "
-                            "and the name for your file with the button "
+                            "a text into sentences. The text is split based "
+                            "on full stops.\nThis option will create a file "
+                            "with the result. You can choose the path and the "
+                            "name for your file with the button "
                             "'Save as'.",
     "tok_sentence_description": "With Sentence Tokenizer, you can tokenize "
                                 "(split) a sentence into words. The sentences "
@@ -72,7 +72,7 @@ dict_EN = {
     "stopwords_rem_description": "This function removes the stopwords from a "
                                  "text. This means that all words with no "
                                  "meaning in the text (as articles, "
-                                 "prepositions or puntuaction marks) will be "
+                                 "prepositions or punctuation marks) will be "
                                  "removed from the text.\nThis option will "
                                  "create a file with the result. You can "
                                  "choose the path and the name for your "
@@ -91,14 +91,14 @@ dict_EN = {
                        "stopwords' in the file to avoid getting strange "
                        "results (for instance, getting articles, pronouns "
                        "or even punctuation marks as the most frequent word.)",
-    "plot_description": "This function shows a graph with the frequency of "
-                        "each word. You can choose how many words will be "
-                        "displayed in it.\nA new window will appear with the "
-                        "graph.\nIt's recommended to first execute the "
-                        "function 'Remove stopwords' in the file to avoid "
-                        "getting strange results (for instance, getting "
-                        "articles, pronouns or even punctuation marks as as "
-                        "words in the graph.)",
+    "plot_description": "This function shows a graph with the most frequent "
+                        "words in the text and the number of time they appear. "
+                        "You can choose how many words will be displayed.\nA"
+                        " new window will appear with the graph.\nIt's "
+                        "recommended to first execute the function 'Remove "
+                        "stopwords' in the file to avoid getting strange "
+                        "results (for instance, getting articles, pronouns or "
+                        "even punctuation marks as words in the graph.)",
     "plot_var_description": "No. of words displayed in the graph:",
     "stopwords_lang": "english",
     "popup_tok": "Your text has been tokenized!",
@@ -181,15 +181,15 @@ dict_ES = {
                        "lugar a resultados extraños (por ejemplo, que la "
                        "palabra más frecuente sea un artículo, un pronombre o "
                        "incluso un signo de puntuación.",
-    "plot_description": "Esta función muestra un gráfico con la frecuencia de "
-                        "cada palabra en el texto. Puedes escoger el número "
-                        "de palabras que aparecerán en él.\nSe mostrará un "
-                        "popup con el resultado.\nSe recomienda ejecutar "
-                        "primero la función 'Quitar las stopwords' en el "
-                        "mismo archivo para evitar que dé lugar a resultados "
-                        "extraños (por ejemplo, que artículos, pronombres o "
-                        "signos de puntuación aparezcan como palabras en "
-                        "el gráfico).",
+    "plot_description": "Esta función muestra un gráfico con las palabras más "
+                        "frecuentes en el texto y el número de veces que "
+                        "aparecen. Puedes escoger el número de palabras que "
+                        "aparecerán en él.\nSe mostrará un popup con el "
+                        "resultado.\nSe recomienda ejecutar primero la "
+                        "función 'Quitar las stopwords' en el mismo archivo "
+                        "para evitar que dé lugar a resultados extraños (por "
+                        "ejemplo, que artículos, pronombres o signos de "
+                        "puntuación aparezcan como palabras en el gráfico).",
     "plot_var_description": "Nº de palabras que se mostrarán en el gráfico:",
     "stopwords_lang": "spanish",
     "popup_tok": "¡Hemos tokenizado tu archivo!",
