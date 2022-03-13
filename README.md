@@ -44,10 +44,12 @@ Note: step 2 and onwards must be executed from the terminal, possibly requiring 
 
 Welcome Window
 
-
+![Image_Welcome_Menu](https://user-images.githubusercontent.com/72768790/158059889-c1f5e397-4ae3-4d78-a85f-0476abb30d0d.png)
 
 Main GUI in English
 
+![Image_GUI_English](https://user-images.githubusercontent.com/72768790/158059893-2bfcd1bd-47fa-4696-887f-e584aef4abe9.png)
 
 Main GUI in Spanish
 
+![Image_GUI_Spanish](https://user-images.githubusercontent.com/72768790/158059894-9a8a8a15-5bb1-4b90-a68b-8417e3c10285.png)
