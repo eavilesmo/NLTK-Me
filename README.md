@@ -37,5 +37,17 @@ Note: step 2 and onwards must be executed from the terminal, possibly requiring 
 5) Install matplotlib: \
     \>> pip3 install matplotlib
 5) Download the application from the path and run NLTK-Me!.py: \
-    \>> python NLTK-Me!.py \
+    \>> python NLTK-Me!.py
 6) Enjoy!
+
+## Screenshots
+
+Welcome Window
+
+
+
+Main GUI in English
+
+
+Main GUI in Spanish
+
