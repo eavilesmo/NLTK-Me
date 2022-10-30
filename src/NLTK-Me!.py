@@ -11,8 +11,8 @@
 
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
-from Text_Processing_Tools import *
-from GUI_Constants import *
+from src.Text_Processing_Tools import *
+from src.GUI_Constants import *
 
 # -----------------------------------------------------------------------------
 # Definition of functions
