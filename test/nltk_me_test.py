@@ -1,9 +1,10 @@
 import unittest
+from src.Text_Processing_Tools import tokenize_text
 
 
 class TestNltkApp(unittest.TestCase):
 
-    def test_upper(self):
+    def test_tokenize_text(self):
         self.assertEqual(True, True)
 
 
