@@ -10,10 +10,12 @@ class TestNltkApp(unittest.TestCase):
         get_file_path = ""
         filename_path = ""
         text_processing_tools = TextProcessingTools()
-
+        expected_result = "Hello"
         allow(text_processing_tools).tokenize_text(get_file_path, filename_path).and_return("Hello")
 
-        self.assertEqual(text_processing_tools.tokenize_text(get_file_path, filename_path), "Hello")
+        actual_result = text_processing_tools.tokenize_text(get_file_path, filename_path)
+
+        self.assertEqual(actual_result, expected_result)
 
 
 if __name__ == '__main__':
