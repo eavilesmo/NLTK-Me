@@ -12,18 +12,17 @@ stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
 
 
 class TextProcessingTools:
-    def tokenize_text(get_file_text, filename_path):
+    file_handler = FileHandler()
+
+    def tokenize_text(self, get_file_text, filename_path):
         """Text tokenizer - Divides a text into sentences"""
         try:
-            file_for_tok_text = FileHandler.read(get_file_text)
+            file_for_tok_text = self.file_handler.read(get_file_text)
             tokenized_text = sent_tokenize(file_for_tok_text)
             if len(tokenized_text) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
             else:
-                with open(filename_path, "w") as result_text:
-                    for line in tokenized_text:
-                        result_text.write(line)
-                        result_text.write("\n")
+                self.file_handler.write(filename_path, tokenized_text)
                 return ErrorCode.NO_ERROR
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
@@ -82,7 +81,7 @@ class TextProcessingTools:
             data_from_twords = 0
             return ErrorCode.UNICODE_ERROR, data_from_twords
 
-# Frequency Distribution functions
+    # Frequency Distribution functions
     def freqdist_count(get_file_fdist_count, get_data_count):
         """
         FreqDist Count - Count how many times a certain word appears in the text
