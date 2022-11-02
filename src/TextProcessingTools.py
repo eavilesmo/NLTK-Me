@@ -15,7 +15,6 @@ class TextProcessingTools:
     file_handler = FileHandler()
 
     def tokenize_text(self, get_file_text, filename_path):
-        """Text tokenizer - Divides a text into sentences"""
         try:
             file_for_tok_text = self.file_handler.read(get_file_text)
             tokenized_text = sent_tokenize(file_for_tok_text)
