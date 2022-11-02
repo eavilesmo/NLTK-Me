@@ -5,16 +5,17 @@ from nltk import FreqDist
 from nltk.corpus import stopwords
 
 from src.ErrorCode import ErrorCode
+from src.FileHandler import FileHandler
 
 stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
                     "/", "\\", "@", "#", ":", "'", "’"]
 
 
 class TextProcessingTools:
-    def tokenize_text(self, get_file_text, filename_path):
+    def tokenize_text(get_file_text, filename_path):
         """Text tokenizer - Divides a text into sentences"""
         try:
-            file_for_tok_text = open(get_file_text, encoding="UTF-8").read()
+            file_for_tok_text = FileHandler.read(get_file_text)
             tokenized_text = sent_tokenize(file_for_tok_text)
             if len(tokenized_text) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
@@ -27,7 +28,7 @@ class TextProcessingTools:
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
 
-    def tokenize_sentence(self, get_file_sentence, filename_path):
+    def tokenize_sentence(get_file_sentence, filename_path):
         """Sentence tokenizer - Divides one or more sentences into words"""
         try:
             file_for_tok_sentence = open(get_file_sentence, encoding="UTF-8").read()
@@ -45,7 +46,7 @@ class TextProcessingTools:
         except UnicodeDecodeError:
             return ErrorCode.UNICODE_ERROR
 
-    def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
+    def stopwords_remover(get_file_stopwords, filename_path, stopwords_language):
         """Stopwords remover - Removes the stopwords from a text"""
         try:
             file_for_stopwords_remover = open(get_file_stopwords, encoding="UTF-8").read()
@@ -64,7 +65,7 @@ class TextProcessingTools:
         except UnicodeDecodeError:
             return ErrorCode.UNICODE_ERROR
 
-    def total_words_count(self, get_file_twords):
+    def total_words_count(get_file_twords):
         """Total words - Shows how many words are in the text"""
         try:
             file_for_twords = open(get_file_twords, encoding="UTF-8").read()
@@ -82,7 +83,7 @@ class TextProcessingTools:
             return ErrorCode.UNICODE_ERROR, data_from_twords
 
 # Frequency Distribution functions
-    def freqdist_count(self, get_file_fdist_count, get_data_count):
+    def freqdist_count(get_file_fdist_count, get_data_count):
         """
         FreqDist Count - Count how many times a certain word appears in the text
         """
@@ -105,7 +106,7 @@ class TextProcessingTools:
             data_from_count = 0
             return ErrorCode.UNICODE_ERROR, data_from_count
 
-    def freqdist_max(self, get_file_fdist_max):
+    def freqdist_max(get_file_fdist_max):
         """FreqDist Max - Shows most repeated word"""
         try:
             file_for_fdist_max = open(get_file_fdist_max, encoding="UTF-8").read()
@@ -124,7 +125,7 @@ class TextProcessingTools:
             data_from_max = 0
             return ErrorCode.UNICODE_ERROR, data_from_max
 
-    def freqdist_plot(self, get_file_fdist_plot, get_data_plot):
+    def freqdist_plot(get_file_fdist_plot, get_data_plot):
         """FreqDist Plot - Shows a graph with words frequency"""
         try:
             file_for_fdist_plot = open(get_file_fdist_plot, encoding="UTF-8").read()
