@@ -15,6 +15,7 @@ from nltk.tokenize.treebank import TreebankWordTokenizer
 from nltk import FreqDist
 from nltk.corpus import stopwords
 
+from src.ErrorCode import ErrorCode
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -22,13 +23,6 @@ from nltk.corpus import stopwords
 
 
 # Class Error for handling errors of the application
-class ErrorCode:
-    UNICODE_ERROR = 1
-    VALUE_ERROR = 2
-    PATH_ERROR = 3
-    EMPTY_FILE_ERROR = 4
-    NO_ERROR = 5
-
 
 # -----------------------------------------------------------------------------
 # Lists
