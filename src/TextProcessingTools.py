@@ -1,14 +1,3 @@
-# -----------------------------------------------------------------------------
-# Description of the file
-# -----------------------------------------------------------------------------
-
-# The Text_Processing_Tools file hosts all the functions needed for the
-# Main (NLTK-Me!) file.
-
-# -----------------------------------------------------------------------------
-# Imports
-# -----------------------------------------------------------------------------
-
 from nltk.tokenize import sent_tokenize
 from nltk import word_tokenize
 from nltk.tokenize.treebank import TreebankWordTokenizer
@@ -16,18 +5,6 @@ from nltk import FreqDist
 from nltk.corpus import stopwords
 
 from src.ErrorCode import ErrorCode
-
-# -----------------------------------------------------------------------------
-# Classes
-# -----------------------------------------------------------------------------
-
-
-# Class Error for handling errors of the application
-
-# -----------------------------------------------------------------------------
-# Lists
-# -----------------------------------------------------------------------------
-
 
 stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
                     "/", "\\", "@", "#", ":", "'", "’"]
