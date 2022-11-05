@@ -12,7 +12,8 @@ stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
 
 
 class TextProcessingTools:
-    file_handler = FileHandler()
+    def __init__(self, file_handler: FileHandler):
+        self.file_handler = file_handler
 
     def tokenize_text(self, get_file_text, filename_path):
         try:
@@ -26,19 +27,16 @@ class TextProcessingTools:
         except FileNotFoundError:
             return "File not found"
 
-    def tokenize_sentence(get_file_sentence, filename_path):
+    def tokenize_sentence(self, get_file_sentence, filename_path):
         """Sentence tokenizer - Divides one or more sentences into words"""
         try:
-            file_for_tok_sentence = open(get_file_sentence, encoding="UTF-8").read()
+            file_for_tok_sentence = self.file_handler.readFile(get_file_sentence)
             tokenized_sentence = word_tokenize(file_for_tok_sentence)
             if len(tokenized_sentence) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
             else:
-                with open(filename_path, "w") as result_sentence:
-                    for word in tokenized_sentence:
-                        result_sentence.write(word)
-                        result_sentence.write("\n")
-                return ErrorCode.NO_ERROR
+                self.file_handler.write(filename_path, tokenized_sentence)
+                return tokenized_sentence
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
         except UnicodeDecodeError:
