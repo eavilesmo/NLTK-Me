@@ -43,16 +43,12 @@ class TextProcessingTools:
 
     def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
         try:
-            file_for_stopwords_remover = open(get_file_stopwords, encoding="UTF-8").read()
+            file_for_stopwords_remover = self.file_handler.readFile(get_file_stopwords)
             stop_words = set(stopwords.words(stopwords_language))
             tokenized_file = word_tokenize(file_for_stopwords_remover)
             if len(tokenized_file) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
-            with open(filename_path, "w") as result_stopwords:
-                for word in tokenized_file:
-                    word = word.lower()
-                    if word not in stop_words and word not in stopword_symbols:
-                        result_stopwords.write(" " + word)
+            self.file_handler.writeStopwords(filename_path, tokenized_file, stop_words, stopword_symbols)
             return tokenized_file
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
