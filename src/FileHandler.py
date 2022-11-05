@@ -1,6 +1,6 @@
 class FileHandler:
 
-    def read(self, get_file_text):
+    def readFile(self, get_file_text):
         return open(get_file_text, encoding="UTF-8").read()
 
     def write(self, filename_path, tokenized_text):
