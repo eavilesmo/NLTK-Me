@@ -28,7 +28,6 @@ class TextProcessingTools:
             return "File not found"
 
     def tokenize_sentence(self, get_file_sentence, filename_path):
-        """Sentence tokenizer - Divides one or more sentences into words"""
         try:
             file_for_tok_sentence = self.file_handler.readFile(get_file_sentence)
             tokenized_sentence = word_tokenize(file_for_tok_sentence)
@@ -42,8 +41,7 @@ class TextProcessingTools:
         except UnicodeDecodeError:
             return ErrorCode.UNICODE_ERROR
 
-    def stopwords_remover(get_file_stopwords, filename_path, stopwords_language):
-        """Stopwords remover - Removes the stopwords from a text"""
+    def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
         try:
             file_for_stopwords_remover = open(get_file_stopwords, encoding="UTF-8").read()
             stop_words = set(stopwords.words(stopwords_language))
@@ -55,7 +53,7 @@ class TextProcessingTools:
                     word = word.lower()
                     if word not in stop_words and word not in stopword_symbols:
                         result_stopwords.write(" " + word)
-            return ErrorCode.NO_ERROR
+            return tokenized_file
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
         except UnicodeDecodeError:
