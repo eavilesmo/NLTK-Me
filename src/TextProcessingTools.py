@@ -16,15 +16,15 @@ class TextProcessingTools:
 
     def tokenize_text(self, get_file_text, filename_path):
         try:
-            file_for_tok_text = self.file_handler.read(get_file_text)
+            file_for_tok_text = self.file_handler.readFile(get_file_text)
             tokenized_text = sent_tokenize(file_for_tok_text)
             if len(tokenized_text) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
             else:
                 self.file_handler.write(filename_path, tokenized_text)
-                return ErrorCode.NO_ERROR
+                return tokenized_text
         except FileNotFoundError:
-            return ErrorCode.PATH_ERROR
+            return "File not found"
 
     def tokenize_sentence(get_file_sentence, filename_path):
         """Sentence tokenizer - Divides one or more sentences into words"""
