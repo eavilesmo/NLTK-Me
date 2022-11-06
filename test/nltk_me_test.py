@@ -36,6 +36,21 @@ class TestNltkApp(unittest.TestCase):
 
         assert_that(actual_tokenized_sentence, equal_to(expected_tokenized_sentence))
 
+    def test_stopwords_remover(self):
+        file_content = "The stopwords from this sentence will be removed"
+        get_file_path = "any_path"
+        filename_path = "any_file_name_path"
+        stopwords_language = "english"
+        expected_processed_text = ["stopwords", "sentence", "removed"]
+
+        with Stub(FileHandler) as stub:
+            when(stub).readFile(ANY_ARG).returns(file_content)
+            text_processing_tools = TextProcessingTools(stub)
+            actual_processed_text = text_processing_tools.stopwords_remover(get_file_path,
+                                                                            filename_path, stopwords_language)
+
+        assert_that(actual_processed_text, equal_to(expected_processed_text))
+
 
 if __name__ == '__main__':
     unittest.main()
