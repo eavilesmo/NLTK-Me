@@ -48,8 +48,12 @@ class TextProcessingTools:
             tokenized_file = word_tokenize(file_for_stopwords_remover)
             if len(tokenized_file) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
-            self.file_handler.writeStopwords(filename_path, tokenized_file, stop_words, stopword_symbols)
-            return tokenized_file
+            result = []
+            for word in tokenized_file:
+                word = word.lower()
+                if word not in stop_words and word not in stopword_symbols:
+                    result.append(word)
+            return result
         except FileNotFoundError:
             return ErrorCode.PATH_ERROR
         except UnicodeDecodeError:
