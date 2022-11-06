@@ -112,22 +112,3 @@ class TextProcessingTools:
         except UnicodeDecodeError:
             data_from_max = 0
             return ErrorCode.UNICODE_ERROR, data_from_max
-
-    def freqdist_plot(get_file_fdist_plot, get_data_plot):
-        """FreqDist Plot - Shows a graph with words frequency"""
-        try:
-            file_for_fdist_plot = open(get_file_fdist_plot, encoding="UTF-8").read()
-            tokenizer = TreebankWordTokenizer()
-            fdist_plot_tokenized = tokenizer.tokenize(file_for_fdist_plot)
-            if len(fdist_plot_tokenized) <= 0:
-                data_from_plot = 0
-                return ErrorCode.EMPTY_FILE_ERROR, data_from_plot
-            fdist_plot = FreqDist(fdist_plot_tokenized)
-            data_from_plot = fdist_plot.plot(int(get_data_plot))
-            return ErrorCode.NO_ERROR, data_from_plot
-        except FileNotFoundError:
-            data_from_plot = 0
-            return ErrorCode.PATH_ERROR, data_from_plot
-        except UnicodeDecodeError:
-            data_from_plot = 0
-            return ErrorCode.UNICODE_ERROR, data_from_plot
