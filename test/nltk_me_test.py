@@ -51,6 +51,18 @@ class TestNltkApp(unittest.TestCase):
 
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 
+    def test_total_words_count(self):
+        file_content = "Testing now this method"
+        expected_wordcount = 4
+        get_file_path = "any_path"
+
+        with Stub(FileHandler) as stub:
+            when(stub).readFile(ANY_ARG).returns(file_content)
+            text_processing_tools = TextProcessingTools(stub)
+            actual_wordcount = text_processing_tools.total_words_count(get_file_path)
+
+        assert_that(actual_wordcount, equal_to(expected_wordcount))
+
 
 if __name__ == '__main__':
     unittest.main()
