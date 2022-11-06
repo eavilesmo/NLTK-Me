@@ -15,7 +15,7 @@ class TestNltkApp(unittest.TestCase):
         expected_result = ["This is a sentence.", "This is a second sentence."]
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             stub.write(ANY_ARG)
             text_processing_tools = TextProcessingTools(stub)
             actual_result = text_processing_tools.tokenize_text(get_file_path, filename_path)
@@ -29,7 +29,7 @@ class TestNltkApp(unittest.TestCase):
         expected_tokenized_sentence = ["This", "is", "a", "sentence", "."]
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             stub.write(ANY_ARG)
             text_processing_tools = TextProcessingTools(stub)
             actual_tokenized_sentence = text_processing_tools.tokenize_sentence(get_file_path, filename_path)
@@ -44,7 +44,7 @@ class TestNltkApp(unittest.TestCase):
         expected_processed_text = ["stopwords", "sentence", "removed"]
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
             actual_processed_text = text_processing_tools.stopwords_remover(get_file_path,
                                                                             filename_path, stopwords_language)
@@ -57,7 +57,7 @@ class TestNltkApp(unittest.TestCase):
         get_file_path = "any_path"
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
             actual_wordcount = text_processing_tools.total_words_count(get_file_path)
 
@@ -70,7 +70,7 @@ class TestNltkApp(unittest.TestCase):
         word_to_count = "a"
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
             actual_count = text_processing_tools.freqdist_count(get_file_path, word_to_count)
 
@@ -82,7 +82,7 @@ class TestNltkApp(unittest.TestCase):
         expected_most_repeated_word = "a"
 
         with Stub(FileHandler) as stub:
-            when(stub).readFile(ANY_ARG).returns(file_content)
+            when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
             actual_most_repeated_word = text_processing_tools.freqdist_max(get_file_path)
 

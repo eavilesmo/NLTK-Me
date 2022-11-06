@@ -17,7 +17,7 @@ class TextProcessingTools:
 
     def tokenize_text(self, get_file_text, filename_path):
         try:
-            file_for_tok_text = self.file_handler.readFile(get_file_text)
+            file_for_tok_text = self.file_handler.read_file(get_file_text)
             tokenized_text = sent_tokenize(file_for_tok_text)
             if len(tokenized_text) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
@@ -29,7 +29,7 @@ class TextProcessingTools:
 
     def tokenize_sentence(self, get_file_sentence, filename_path):
         try:
-            file_for_tok_sentence = self.file_handler.readFile(get_file_sentence)
+            file_for_tok_sentence = self.file_handler.read_file(get_file_sentence)
             tokenized_sentence = word_tokenize(file_for_tok_sentence)
             if len(tokenized_sentence) <= 0:
                 return ErrorCode.EMPTY_FILE_ERROR
@@ -43,7 +43,7 @@ class TextProcessingTools:
 
     def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
         try:
-            file_for_stopwords_remover = self.file_handler.readFile(get_file_stopwords)
+            file_for_stopwords_remover = self.file_handler.read_file(get_file_stopwords)
             stop_words = set(stopwords.words(stopwords_language))
             tokenized_file = word_tokenize(file_for_stopwords_remover)
             if len(tokenized_file) <= 0:
@@ -61,7 +61,7 @@ class TextProcessingTools:
 
     def total_words_count(self, get_file_twords):
         try:
-            file_for_twords = self.file_handler.readFile(get_file_twords)
+            file_for_twords = self.file_handler.read_file(get_file_twords)
             if len(file_for_twords) <= 0:
                 data_from_twords = 0
                 return ErrorCode.EMPTY_FILE_ERROR, data_from_twords
@@ -77,7 +77,7 @@ class TextProcessingTools:
 
     def freqdist_count(self, get_file_fdist_count, get_data_count):
         try:
-            file_for_fdist_count = self.file_handler.readFile(get_file_fdist_count)
+            file_for_fdist_count = self.file_handler.read_file(get_file_fdist_count)
             file_for_fdist_count = file_for_fdist_count.lower()
             tokenizer = TreebankWordTokenizer()
             fdist_count_tokenized = tokenizer.tokenize(file_for_fdist_count)
@@ -97,7 +97,7 @@ class TextProcessingTools:
 
     def freqdist_max(self, get_file_fdist_max):
         try:
-            file_for_fdist_max = self.file_handler.readFile(get_file_fdist_max)
+            file_for_fdist_max = self.file_handler.read_file(get_file_fdist_max)
             tokenizer = TreebankWordTokenizer()
             fdist_max_tokenized = tokenizer.tokenize(file_for_fdist_max)
             if len(fdist_max_tokenized) <= 0:
