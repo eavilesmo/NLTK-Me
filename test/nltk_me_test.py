@@ -63,6 +63,19 @@ class TestNltkApp(unittest.TestCase):
 
         assert_that(actual_wordcount, equal_to(expected_wordcount))
 
+    def test_freqdist_count(self):
+        file_content = "This is a test, not a potato, not a carrot"
+        expected_count = 3
+        get_file_path = "any_path"
+        word_to_count = "a"
+
+        with Stub(FileHandler) as stub:
+            when(stub).readFile(ANY_ARG).returns(file_content)
+            text_processing_tools = TextProcessingTools(stub)
+            actual_count = text_processing_tools.freqdist_count(get_file_path, word_to_count)
+
+        assert_that(actual_count, equal_to(expected_count))
+
 
 if __name__ == '__main__':
     unittest.main()
