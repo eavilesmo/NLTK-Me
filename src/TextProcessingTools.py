@@ -95,10 +95,9 @@ class TextProcessingTools:
             data_from_count = 0
             return ErrorCode.UNICODE_ERROR, data_from_count
 
-    def freqdist_max(get_file_fdist_max):
-        """FreqDist Max - Shows most repeated word"""
+    def freqdist_max(self, get_file_fdist_max):
         try:
-            file_for_fdist_max = open(get_file_fdist_max, encoding="UTF-8").read()
+            file_for_fdist_max = self.file_handler.readFile(get_file_fdist_max)
             tokenizer = TreebankWordTokenizer()
             fdist_max_tokenized = tokenizer.tokenize(file_for_fdist_max)
             if len(fdist_max_tokenized) <= 0:
@@ -106,7 +105,7 @@ class TextProcessingTools:
                 return ErrorCode.EMPTY_FILE_ERROR, data_from_max
             fdist_max = FreqDist(fdist_max_tokenized)
             data_from_max = fdist_max.max()
-            return ErrorCode.NO_ERROR, data_from_max
+            return data_from_max
         except FileNotFoundError:
             data_from_max = 0
             return ErrorCode.PATH_ERROR, data_from_max
