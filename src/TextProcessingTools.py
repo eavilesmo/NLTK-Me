@@ -68,7 +68,7 @@ class TextProcessingTools:
                 return ErrorCode.EMPTY_FILE_ERROR, data_from_twords
             tokenized_sentence = word_tokenize(file_for_twords)
             data_from_twords = len(tokenized_sentence)
-            return ErrorCode.NO_ERROR, data_from_twords
+            return data_from_twords
         except FileNotFoundError:
             data_from_twords = 0
             return ErrorCode.PATH_ERROR, data_from_twords
