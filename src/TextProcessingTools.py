@@ -59,10 +59,9 @@ class TextProcessingTools:
         except UnicodeDecodeError:
             return ErrorCode.UNICODE_ERROR
 
-    def total_words_count(get_file_twords):
-        """Total words - Shows how many words are in the text"""
+    def total_words_count(self, get_file_twords):
         try:
-            file_for_twords = open(get_file_twords, encoding="UTF-8").read()
+            file_for_twords = self.file_handler.readFile(get_file_twords)
             if len(file_for_twords) <= 0:
                 data_from_twords = 0
                 return ErrorCode.EMPTY_FILE_ERROR, data_from_twords
