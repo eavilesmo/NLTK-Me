@@ -75,13 +75,9 @@ class TextProcessingTools:
             data_from_twords = 0
             return ErrorCode.UNICODE_ERROR, data_from_twords
 
-    # Frequency Distribution functions
-    def freqdist_count(get_file_fdist_count, get_data_count):
-        """
-        FreqDist Count - Count how many times a certain word appears in the text
-        """
+    def freqdist_count(self, get_file_fdist_count, get_data_count):
         try:
-            file_for_fdist_count = open(get_file_fdist_count, encoding="UTF-8").read()
+            file_for_fdist_count = self.file_handler.readFile(get_file_fdist_count)
             file_for_fdist_count = file_for_fdist_count.lower()
             tokenizer = TreebankWordTokenizer()
             fdist_count_tokenized = tokenizer.tokenize(file_for_fdist_count)
@@ -91,7 +87,7 @@ class TextProcessingTools:
             fdist_count = FreqDist(fdist_count_tokenized)
             get_data_count = get_data_count.lower()
             data_from_count = fdist_count[get_data_count]
-            return ErrorCode.NO_ERROR, data_from_count
+            return data_from_count
         except FileNotFoundError:
             data_from_count = 0
             return ErrorCode.PATH_ERROR, data_from_count
