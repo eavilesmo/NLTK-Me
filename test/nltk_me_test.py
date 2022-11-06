@@ -76,6 +76,18 @@ class TestNltkApp(unittest.TestCase):
 
         assert_that(actual_count, equal_to(expected_count))
 
+    def test_freqdist_max(self):
+        file_content = "This is a test, not a potato, not a carrot"
+        get_file_path = "any_path"
+        expected_most_repeated_word = "a"
+
+        with Stub(FileHandler) as stub:
+            when(stub).readFile(ANY_ARG).returns(file_content)
+            text_processing_tools = TextProcessingTools(stub)
+            actual_most_repeated_word = text_processing_tools.freqdist_max(get_file_path)
+
+        assert_that(actual_most_repeated_word, equal_to(expected_most_repeated_word))
+
 
 if __name__ == '__main__':
     unittest.main()
