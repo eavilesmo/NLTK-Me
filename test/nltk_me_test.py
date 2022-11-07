@@ -2,7 +2,7 @@ import unittest
 from doublex import Stub, assert_that, when, ANY_ARG
 from hamcrest import equal_to
 
-from src.FileHandler import FileHandler
+from src.infrastructure.FileHandler import FileHandler
 from src.domain.TextProcessingTools import TextProcessingTools
 
 

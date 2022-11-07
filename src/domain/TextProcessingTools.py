@@ -5,7 +5,7 @@ from nltk import FreqDist
 from nltk.corpus import stopwords
 
 from src.ErrorCode import ErrorCode
-from src.FileHandler import FileHandler
+from src.infrastructure.FileHandler import FileHandler
 
 stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
                     "/", "\\", "@", "#", ":", "'", "’"]
