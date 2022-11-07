@@ -1,9 +1,9 @@
 import unittest
-from doublex import Stub, assert_that, Mock, when, ANY_ARG
-from hamcrest import is_, equal_to
+from doublex import Stub, assert_that, when, ANY_ARG
+from hamcrest import equal_to
 
 from src.FileHandler import FileHandler
-from src.TextProcessingTools import TextProcessingTools
+from src.domain.TextProcessingTools import TextProcessingTools
 
 
 class TestNltkApp(unittest.TestCase):
