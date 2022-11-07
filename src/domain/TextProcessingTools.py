@@ -18,19 +18,8 @@ class TextProcessingTools:
     def tokenize_text(self, content_to_tokenize):
         return sent_tokenize(content_to_tokenize)
 
-    def tokenize_sentence(self, get_file_sentence, filename_path):
-        try:
-            file_for_tok_sentence = self.file_handler.read_file(get_file_sentence)
-            tokenized_sentence = word_tokenize(file_for_tok_sentence)
-            if len(tokenized_sentence) <= 0:
-                return ErrorCode.EMPTY_FILE_ERROR
-            else:
-                self.file_handler.write(filename_path, tokenized_sentence)
-                return tokenized_sentence
-        except FileNotFoundError:
-            return ErrorCode.PATH_ERROR
-        except UnicodeDecodeError:
-            return ErrorCode.UNICODE_ERROR
+    def tokenize_sentence(self, content_to_tokenize):
+        return word_tokenize(content_to_tokenize)
 
     def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
         try:
