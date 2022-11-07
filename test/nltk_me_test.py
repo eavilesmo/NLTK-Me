@@ -46,8 +46,8 @@ class TestNltkApp(unittest.TestCase):
         with Stub(FileHandler) as stub:
             when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
-            actual_processed_text = text_processing_tools.stopwords_remover(get_file_path,
-                                                                            filename_path, stopwords_language)
+            actual_processed_text = text_processing_tools.remove_stopwords(get_file_path,
+                                                                           filename_path, stopwords_language)
 
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 

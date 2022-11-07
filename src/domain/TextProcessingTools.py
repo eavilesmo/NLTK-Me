@@ -21,23 +21,15 @@ class TextProcessingTools:
     def tokenize_sentence(self, content_to_tokenize):
         return word_tokenize(content_to_tokenize)
 
-    def stopwords_remover(self, get_file_stopwords, filename_path, stopwords_language):
-        try:
-            file_for_stopwords_remover = self.file_handler.read_file(get_file_stopwords)
-            stop_words = set(stopwords.words(stopwords_language))
-            tokenized_file = word_tokenize(file_for_stopwords_remover)
-            if len(tokenized_file) <= 0:
-                return ErrorCode.EMPTY_FILE_ERROR
-            result = []
-            for word in tokenized_file:
-                word = word.lower()
-                if word not in stop_words and word not in stopword_symbols:
-                    result.append(word)
-            return result
-        except FileNotFoundError:
-            return ErrorCode.PATH_ERROR
-        except UnicodeDecodeError:
-            return ErrorCode.UNICODE_ERROR
+    def remove_stopwords(self, content_to_process, language):
+        stop_words = set(stopwords.words(language))
+        tokenized_file = word_tokenize(content_to_process)
+        processed_content = []
+        for word in tokenized_file:
+            word = word.lower()
+            if word not in stop_words and word not in stopword_symbols:
+                processed_content.append(word)
+        return processed_content
 
     def total_words_count(self, get_file_twords):
         try:

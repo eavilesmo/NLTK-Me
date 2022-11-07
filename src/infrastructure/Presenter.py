@@ -21,3 +21,11 @@ class Presenter:
         if len(tokenized_content) <= 0:
             return "The file is empty."
         self.file_handler.write(filename_path, tokenized_content)
+
+    def remove_stopwords(self, file, filename_path, language):
+        content_to_process = self.file_handler.read_file(file)
+        processed_content = self.text_processing_tools.remove_stopwords(content_to_process, language)
+        if len(processed_content) <= 0:
+            return "The file is empty."
+        self.file_handler.write(filename_path, processed_content)
+
