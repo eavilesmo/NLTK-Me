@@ -4,10 +4,8 @@ from nltk.tokenize.treebank import TreebankWordTokenizer
 from nltk import FreqDist
 from nltk.corpus import stopwords
 
+from src.domain.StopwordSymbols import stopword_symbols
 from src.infrastructure.FileHandler import FileHandler
-
-stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
-                    "/", "\\", "@", "#", ":", "'", "’"]
 
 
 class TextProcessingTools:
