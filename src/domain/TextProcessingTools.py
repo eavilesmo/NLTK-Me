@@ -36,25 +36,14 @@ class TextProcessingTools:
         total_words = len(tokenized_content)
         return total_words
 
-    def freqdist_count(self, get_file_fdist_count, get_data_count):
-        try:
-            file_for_fdist_count = self.file_handler.read_file(get_file_fdist_count)
-            file_for_fdist_count = file_for_fdist_count.lower()
-            tokenizer = TreebankWordTokenizer()
-            fdist_count_tokenized = tokenizer.tokenize(file_for_fdist_count)
-            if len(fdist_count_tokenized) <= 0:
-                data_from_count = 0
-                return ErrorCode.EMPTY_FILE_ERROR, data_from_count
-            fdist_count = FreqDist(fdist_count_tokenized)
-            get_data_count = get_data_count.lower()
-            data_from_count = fdist_count[get_data_count]
-            return data_from_count
-        except FileNotFoundError:
-            data_from_count = 0
-            return ErrorCode.PATH_ERROR, data_from_count
-        except UnicodeDecodeError:
-            data_from_count = 0
-            return ErrorCode.UNICODE_ERROR, data_from_count
+    def freqdist_count(self, content_to_process, word_to_search_for):
+        processed_content = content_to_process.lower()
+        tokenizer = TreebankWordTokenizer()
+        tokenized_content = tokenizer.tokenize(processed_content)
+        processed_tokenized_content = FreqDist(tokenized_content)
+        word_to_search_for = word_to_search_for.lower()
+        number_of_repetitions = processed_tokenized_content[word_to_search_for]
+        return number_of_repetitions
 
     def freqdist_max(self, get_file_fdist_max):
         try:

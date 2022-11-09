@@ -35,3 +35,9 @@ class Presenter:
         if len(total_words) <= 0:
             return "The file is empty."
 
+    def freqdist_count(self, file, word_to_search_for):
+        content_to_process = self.file_handler.read_file(file)
+        if len(content_to_process) <= 0:
+            return "The file is empty."
+        number_of_repetitions = self.text_processing_tools.freqdist_count(content_to_process, word_to_search_for)
+
