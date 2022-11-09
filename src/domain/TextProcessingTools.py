@@ -45,20 +45,9 @@ class TextProcessingTools:
         number_of_repetitions = processed_tokenized_content[word_to_search_for]
         return number_of_repetitions
 
-    def freqdist_max(self, get_file_fdist_max):
-        try:
-            file_for_fdist_max = self.file_handler.read_file(get_file_fdist_max)
-            tokenizer = TreebankWordTokenizer()
-            fdist_max_tokenized = tokenizer.tokenize(file_for_fdist_max)
-            if len(fdist_max_tokenized) <= 0:
-                data_from_max = 0
-                return ErrorCode.EMPTY_FILE_ERROR, data_from_max
-            fdist_max = FreqDist(fdist_max_tokenized)
-            data_from_max = fdist_max.max()
-            return data_from_max
-        except FileNotFoundError:
-            data_from_max = 0
-            return ErrorCode.PATH_ERROR, data_from_max
-        except UnicodeDecodeError:
-            data_from_max = 0
-            return ErrorCode.UNICODE_ERROR, data_from_max
+    def freqdist_max(self, content_to_process):
+        tokenizer = TreebankWordTokenizer()
+        tokenized_content = tokenizer.tokenize(content_to_process)
+        frequency_distributor = FreqDist(tokenized_content)
+        most_repeated_word = frequency_distributor.max()
+        return most_repeated_word
