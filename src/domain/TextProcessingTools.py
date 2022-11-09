@@ -31,21 +31,10 @@ class TextProcessingTools:
                 processed_content.append(word)
         return processed_content
 
-    def total_words_count(self, get_file_twords):
-        try:
-            file_for_twords = self.file_handler.read_file(get_file_twords)
-            if len(file_for_twords) <= 0:
-                data_from_twords = 0
-                return ErrorCode.EMPTY_FILE_ERROR, data_from_twords
-            tokenized_sentence = word_tokenize(file_for_twords)
-            data_from_twords = len(tokenized_sentence)
-            return data_from_twords
-        except FileNotFoundError:
-            data_from_twords = 0
-            return ErrorCode.PATH_ERROR, data_from_twords
-        except UnicodeDecodeError:
-            data_from_twords = 0
-            return ErrorCode.UNICODE_ERROR, data_from_twords
+    def total_words_count(self, content_to_process):
+        tokenized_content = word_tokenize(content_to_process)
+        total_words = len(tokenized_content)
+        return total_words
 
     def freqdist_count(self, get_file_fdist_count, get_data_count):
         try:

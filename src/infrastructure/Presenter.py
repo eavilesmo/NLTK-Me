@@ -29,3 +29,9 @@ class Presenter:
             return "The file is empty."
         self.file_handler.write(filename_path, processed_content)
 
+    def total_words_count(self, file):
+        content_to_process = self.file_handler.read_file(file)
+        total_words = self.text_processing_tools.total_words_count(content_to_process)
+        if len(total_words) <= 0:
+            return "The file is empty."
+
