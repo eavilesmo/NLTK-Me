@@ -31,7 +31,7 @@ class Presenter:
 
     def total_words_count(self, file):
         content_to_process = self.file_handler.read_file(file)
-        total_words = self.text_processing_tools.total_words_count(content_to_process)
+        total_words = self.text_processing_tools.count_total_words(content_to_process)
         if len(total_words) <= 0:
             return "The file is empty."
 
@@ -39,10 +39,10 @@ class Presenter:
         content_to_process = self.file_handler.read_file(file)
         if len(content_to_process) <= 0:
             return "The file is empty."
-        number_of_repetitions = self.text_processing_tools.freqdist_count(content_to_process, word_to_search_for)
+        number_of_repetitions = self.text_processing_tools.count_repetitions_of_a_word(content_to_process, word_to_search_for)
 
     def freqdist_max(self, file):
         content_to_process = self.file_handler.read_file(file)
         if len(content_to_process) <= 0:
             return "The file is empty."
-        most_repeated_word = self.text_processing_tools.freqdist_max(content_to_process)
+        most_repeated_word = self.text_processing_tools.find_most_repeated_word(content_to_process)

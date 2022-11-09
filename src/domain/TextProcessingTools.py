@@ -30,12 +30,12 @@ class TextProcessingTools:
                 processed_content.append(word)
         return processed_content
 
-    def total_words_count(self, content_to_process):
+    def count_total_words(self, content_to_process):
         tokenized_content = word_tokenize(content_to_process)
         total_words = len(tokenized_content)
         return total_words
 
-    def freqdist_count(self, content_to_process, word_to_search_for):
+    def count_repetitions_of_a_word(self, content_to_process, word_to_search_for):
         processed_content = content_to_process.lower()
         tokenizer = TreebankWordTokenizer()
         tokenized_content = tokenizer.tokenize(processed_content)
@@ -44,7 +44,7 @@ class TextProcessingTools:
         number_of_repetitions = frequency_distributor[word_to_search_for]
         return number_of_repetitions
 
-    def freqdist_max(self, content_to_process):
+    def find_most_repeated_word(self, content_to_process):
         tokenizer = TreebankWordTokenizer()
         tokenized_content = tokenizer.tokenize(content_to_process)
         frequency_distributor = FreqDist(tokenized_content)
