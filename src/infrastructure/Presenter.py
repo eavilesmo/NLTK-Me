@@ -37,12 +37,12 @@ class Presenter:
 
     def freqdist_count(self, file, word_to_search_for):
         content_to_process = self.file_handler.read_file(file)
-        if len(content_to_process) <= 0:
-            return "The file is empty."
         number_of_repetitions = self.text_processing_tools.count_repetitions_of_a_word(content_to_process, word_to_search_for)
+        if len(number_of_repetitions) <= 0:
+            return "The file is empty."
 
     def freqdist_max(self, file):
         content_to_process = self.file_handler.read_file(file)
-        if len(content_to_process) <= 0:
-            return "The file is empty."
         most_repeated_word = self.text_processing_tools.find_most_repeated_word(content_to_process)
+        if len(most_repeated_word) <= 0:
+            return "The file is empty."
