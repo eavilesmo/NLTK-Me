@@ -4,7 +4,6 @@ from nltk.tokenize.treebank import TreebankWordTokenizer
 from nltk import FreqDist
 from nltk.corpus import stopwords
 
-from src.ErrorCode import ErrorCode
 from src.infrastructure.FileHandler import FileHandler
 
 stopword_symbols = ["¡", "!", ",", ".", ";", "-", "_", "¿", "?", "(", ")",
@@ -40,9 +39,9 @@ class TextProcessingTools:
         processed_content = content_to_process.lower()
         tokenizer = TreebankWordTokenizer()
         tokenized_content = tokenizer.tokenize(processed_content)
-        processed_tokenized_content = FreqDist(tokenized_content)
+        frequency_distributor = FreqDist(tokenized_content)
         word_to_search_for = word_to_search_for.lower()
-        number_of_repetitions = processed_tokenized_content[word_to_search_for]
+        number_of_repetitions = frequency_distributor[word_to_search_for]
         return number_of_repetitions
 
     def freqdist_max(self, content_to_process):
