@@ -60,16 +60,14 @@ class TextProcessingToolsTest(unittest.TestCase):
         expected_count = 3
         assert_that(actual_count, equal_to(expected_count))
 
-    def test_freqdist_max(self):
-        file_content = "This is a test, not a potato, not a carrot"
-        get_file_path = "any_path"
+    def test_find_most_repeated_word(self):
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+        content_to_process = "This is a test, not a potato, not a carrot"
+
+        actual_most_repeated_word = text_processing_tools.find_most_repeated_word(content_to_process)
+
         expected_most_repeated_word = "a"
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_most_repeated_word = text_processing_tools.find_most_repeated_word(get_file_path)
-
         assert_that(actual_most_repeated_word, equal_to(expected_most_repeated_word))
 
 
