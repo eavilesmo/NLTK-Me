@@ -49,17 +49,15 @@ class TextProcessingToolsTest(unittest.TestCase):
         expected_wordcount = 4
         assert_that(actual_wordcount, equal_to(expected_wordcount))
 
-    def test_freqdist_count(self):
-        file_content = "This is a test, not a potato, not a carrot"
+    def test_count_repetitions_of_a_word(self):
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+        content_to_process = "This is a test, not a potato, not a carrot"
+        word_to_search_for = "a"
+
+        actual_count = text_processing_tools.count_repetitions_of_a_word(content_to_process, word_to_search_for)
+
         expected_count = 3
-        get_file_path = "any_path"
-        word_to_count = "a"
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_count = text_processing_tools.count_repetitions_of_a_word(get_file_path, word_to_count)
-
         assert_that(actual_count, equal_to(expected_count))
 
     def test_freqdist_max(self):
