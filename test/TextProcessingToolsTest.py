@@ -19,32 +19,24 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_result, equal_to(expected_result))
 
     def test_tokenize_sentence(self):
-        file_content = "This is a sentence."
-        get_file_path = "any_path"
-        filename_path = "any_file_name_path"
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+        content_to_tokenize = "This is a sentence."
+
+        actual_tokenized_sentence = text_processing_tools.tokenize_sentence(content_to_tokenize)
+
         expected_tokenized_sentence = ["This", "is", "a", "sentence", "."]
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            stub.write(ANY_ARG)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_tokenized_sentence = text_processing_tools.tokenize_sentence(get_file_path, filename_path)
-
         assert_that(actual_tokenized_sentence, equal_to(expected_tokenized_sentence))
 
-    def test_stopwords_remover(self):
-        file_content = "The stopwords from this sentence will be removed"
-        get_file_path = "any_path"
-        filename_path = "any_file_name_path"
+    def test_remove_stopwords(self):
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+        content_to_process = "The stopwords from this sentence will be removed"
         stopwords_language = "english"
+
+        actual_processed_text = text_processing_tools.remove_stopwords(content_to_process, stopwords_language)
+
         expected_processed_text = ["stopwords", "sentence", "removed"]
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_processed_text = text_processing_tools.remove_stopwords(get_file_path,
-                                                                           filename_path, stopwords_language)
-
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 
     def test_total_words_count(self):
