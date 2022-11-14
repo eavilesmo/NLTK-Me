@@ -39,16 +39,14 @@ class TextProcessingToolsTest(unittest.TestCase):
         expected_processed_text = ["stopwords", "sentence", "removed"]
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 
-    def test_total_words_count(self):
-        file_content = "Testing now this method"
+    def test_count_total_words(self):
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+        content_to_process = "Testing now this method"
+
+        actual_wordcount = text_processing_tools.count_total_words(content_to_process)
+
         expected_wordcount = 4
-        get_file_path = "any_path"
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_wordcount = text_processing_tools.count_total_words(get_file_path)
-
         assert_that(actual_wordcount, equal_to(expected_wordcount))
 
     def test_freqdist_count(self):
