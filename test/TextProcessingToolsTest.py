@@ -9,17 +9,13 @@ from src.domain.TextProcessingTools import TextProcessingTools
 class TextProcessingToolsTest(unittest.TestCase):
 
     def test_tokenize_text(self):
-        file_content = "This is a sentence. This is a second sentence."
-        get_file_path = "any_path"
-        filename_path = "any_file_name_path"
+        content_to_tokenize = "This is a sentence. This is a second sentence."
+        file_handler = FileHandler()
+        text_processing_tools = TextProcessingTools(file_handler)
+
+        actual_result = text_processing_tools.tokenize_text(content_to_tokenize)
+
         expected_result = ["This is a sentence.", "This is a second sentence."]
-
-        with Stub(FileHandler) as stub:
-            when(stub).read_file(ANY_ARG).returns(file_content)
-            stub.write(ANY_ARG)
-            text_processing_tools = TextProcessingTools(stub)
-            actual_result = text_processing_tools.tokenize_text(get_file_path, filename_path)
-
         assert_that(actual_result, equal_to(expected_result))
 
     def test_tokenize_sentence(self):
