@@ -6,7 +6,7 @@ from src.infrastructure.FileHandler import FileHandler
 from src.domain.TextProcessingTools import TextProcessingTools
 
 
-class TestNltkApp(unittest.TestCase):
+class TextProcessingToolsTest(unittest.TestCase):
 
     def test_tokenize_text(self):
         file_content = "This is a sentence. This is a second sentence."
