@@ -1,9 +1,9 @@
 import unittest
-from doublex import Stub, assert_that, Mock, when, ANY_ARG
-from hamcrest import is_, equal_to
+from doublex import Stub, assert_that, when, ANY_ARG
+from hamcrest import equal_to
 
-from src.FileHandler import FileHandler
-from src.TextProcessingTools import TextProcessingTools
+from src.infrastructure.FileHandler import FileHandler
+from src.domain.TextProcessingTools import TextProcessingTools
 
 
 class TestNltkApp(unittest.TestCase):
@@ -46,8 +46,8 @@ class TestNltkApp(unittest.TestCase):
         with Stub(FileHandler) as stub:
             when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
-            actual_processed_text = text_processing_tools.stopwords_remover(get_file_path,
-                                                                            filename_path, stopwords_language)
+            actual_processed_text = text_processing_tools.remove_stopwords(get_file_path,
+                                                                           filename_path, stopwords_language)
 
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 
@@ -59,7 +59,7 @@ class TestNltkApp(unittest.TestCase):
         with Stub(FileHandler) as stub:
             when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
-            actual_wordcount = text_processing_tools.total_words_count(get_file_path)
+            actual_wordcount = text_processing_tools.count_total_words(get_file_path)
 
         assert_that(actual_wordcount, equal_to(expected_wordcount))
 
@@ -72,7 +72,7 @@ class TestNltkApp(unittest.TestCase):
         with Stub(FileHandler) as stub:
             when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
-            actual_count = text_processing_tools.freqdist_count(get_file_path, word_to_count)
+            actual_count = text_processing_tools.count_repetitions_of_a_word(get_file_path, word_to_count)
 
         assert_that(actual_count, equal_to(expected_count))
 
@@ -84,7 +84,7 @@ class TestNltkApp(unittest.TestCase):
         with Stub(FileHandler) as stub:
             when(stub).read_file(ANY_ARG).returns(file_content)
             text_processing_tools = TextProcessingTools(stub)
-            actual_most_repeated_word = text_processing_tools.freqdist_max(get_file_path)
+            actual_most_repeated_word = text_processing_tools.find_most_repeated_word(get_file_path)
 
         assert_that(actual_most_repeated_word, equal_to(expected_most_repeated_word))
 
