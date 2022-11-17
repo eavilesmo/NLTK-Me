@@ -2,7 +2,7 @@ from src.domain.TextProcessingTools import TextProcessingTools
 from src.infrastructure.FileHandler import FileHandler
 
 
-class Presenter:
+class Executor:
     file_handler = FileHandler()
     text_processing_tools = TextProcessingTools()
 
