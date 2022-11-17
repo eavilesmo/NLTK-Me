@@ -9,8 +9,6 @@ from src.infrastructure.FileHandler import FileHandler
 
 
 class TextProcessingTools:
-    def __init__(self, file_handler: FileHandler):
-        self.file_handler = file_handler
 
     def tokenize_text(self, content_to_tokenize):
         return sent_tokenize(content_to_tokenize)

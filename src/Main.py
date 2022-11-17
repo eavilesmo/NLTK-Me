@@ -125,8 +125,7 @@ def main():
         main_window[KEY_OK].update(disabled=True)
         main_window[KEY_SAVE_AS].update(disabled=True)
 
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
 
         if values[KEY_BROWSE]:
             if values[KEY_TOK_TEXT]:
