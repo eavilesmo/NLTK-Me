@@ -1,14 +1,3 @@
-# -----------------------------------------------------------------------------
-# Description of the file
-# -----------------------------------------------------------------------------
-
-# The NLTK-Me! file executes the GUI and all the functionalities of
-# the application.
-
-# -----------------------------------------------------------------------------
-# Imports
-# -----------------------------------------------------------------------------
-
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
 from src.GUI_Constants import *
@@ -109,7 +98,6 @@ def error_handling(error_result, language, key, function_result="None"):
 def main():
     sg.theme(SG_THEME)
 
-    # Handling language selection window
     welcome_layout = create_welcome_layout()
     welcome_window = sg.Window(TITLE_WIN, welcome_layout)
 
@@ -124,7 +112,6 @@ def main():
             language = dict_ES
             welcome_window.close()
 
-    # Handling main window
     col1, col2 = create_main_layout(language)
     main_layout = [[col1, col2]]
     main_window = sg.Window(TITLE_WIN, main_layout)
@@ -134,13 +121,10 @@ def main():
         if event == sg.WIN_CLOSED:
             break
 
-        # Keeping OK and SAVE AS buttons disabled by default
         main_window[KEY_OK].update(disabled=True)
         main_window[KEY_SAVE_AS].update(disabled=True)
 
-        # Execution of functions
         if values[KEY_BROWSE]:
-            # Tokenize a text
             if values[KEY_TOK_TEXT]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_SAVE_AS]:
@@ -152,7 +136,6 @@ def main():
                                                      filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
-            # Tokenize a sentence
             elif values[KEY_TOK_SENT]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_SAVE_AS]:
@@ -164,7 +147,6 @@ def main():
                                                          filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
-            # Remove stopwords
             elif values[KEY_STOPWORDS]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_STOPWORDS_BUT1] or values[KEY_STOPWORDS_BUT2]:
@@ -183,7 +165,6 @@ def main():
                                                          stopwords_language)
                         key = "stopwords"
                         error_handling(error_result, language, key)
-            # Count total words
             elif values[KEY_TOTAL_WORDS]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
@@ -193,7 +174,6 @@ def main():
                     key = "total_words"
                     error_handling(error_result, language, key,
                                    function_result)
-            # Count the frequency of a specific word
             elif values[KEY_COUNT]:
                 if values[KEY_COUNT_INPUT]:
                     main_window[KEY_OK].update(disabled=False)
@@ -205,7 +185,6 @@ def main():
                         key = "count"
                         error_handling(error_result, language, key,
                                        function_result)
-            # Check the most repeated word
             elif values[KEY_MAX]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
@@ -216,7 +195,6 @@ def main():
                     error_handling(error_result, language, key,
                                    function_result)
 
-        # Update window with descriptions and dropdown options
         if event == KEY_BROWSE:
             main_window[KEY_TEXT_BROWSE].update(values[KEY_BROWSE])
 
@@ -270,10 +248,6 @@ def main():
 
         if event == KEY_SAVE_AS:
             main_window[KEY_TEXT_SAVE_AS].update(values[KEY_SAVE_AS])
-
-# -----------------------------------------------------------------------------
-# Main
-# -----------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
