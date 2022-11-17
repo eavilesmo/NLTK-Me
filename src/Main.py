@@ -1,22 +1,8 @@
-# -----------------------------------------------------------------------------
-# Description of the file
-# -----------------------------------------------------------------------------
-
-# The NLTK-Me! file executes the GUI and all the functionalities of
-# the application.
-
-# -----------------------------------------------------------------------------
-# Imports
-# -----------------------------------------------------------------------------
-
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
-from src.Text_Processing_Tools import *
 from src.GUI_Constants import *
-
-# -----------------------------------------------------------------------------
-# Definition of functions
-# -----------------------------------------------------------------------------
+from src.domain.TextProcessingTools import TextProcessingTools
+from src.infrastructure.FileHandler import FileHandler
 
 
 def create_welcome_layout():
@@ -98,14 +84,11 @@ def error_handling(error_result, language, key, function_result="None"):
         if key == "stopwords":
             sg.Popup(language["popup_stopwords"], title=TITLE_WIN)
         if key == "count":
-            sg.Popup(language["popup_count"].format(function_result),
-                     title=TITLE_WIN)
+            sg.Popup(language["popup_count"].format(function_result), title=TITLE_WIN)
         if key == "total_words":
-            sg.Popup(language["popup_total_words"].format(function_result),
-                     title=TITLE_WIN)
+            sg.Popup(language["popup_total_words"].format(function_result), title=TITLE_WIN)
         if key == "max":
-            sg.Popup(language["popup_max"].format(function_result),
-                     title=TITLE_WIN)
+            sg.Popup(language["popup_max"].format(function_result), title=TITLE_WIN)
         if key == "plot":
             pass
 
@@ -113,7 +96,6 @@ def error_handling(error_result, language, key, function_result="None"):
 def main():
     sg.theme(SG_THEME)
 
-    # Handling language selection window
     welcome_layout = create_welcome_layout()
     welcome_window = sg.Window(TITLE_WIN, welcome_layout)
 
@@ -128,7 +110,6 @@ def main():
             language = dict_ES
             welcome_window.close()
 
-    # Handling main window
     col1, col2 = create_main_layout(language)
     main_layout = [[col1, col2]]
     main_window = sg.Window(TITLE_WIN, main_layout)
@@ -138,13 +119,12 @@ def main():
         if event == sg.WIN_CLOSED:
             break
 
-        # Keeping OK and SAVE AS buttons disabled by default
         main_window[KEY_OK].update(disabled=True)
         main_window[KEY_SAVE_AS].update(disabled=True)
 
-        # Execution of functions
+        text_processing_tools = TextProcessingTools()
+
         if values[KEY_BROWSE]:
-            # Tokenize a text
             if values[KEY_TOK_TEXT]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_SAVE_AS]:
@@ -152,11 +132,9 @@ def main():
                     if event == KEY_OK:
                         get_file_text = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = tokenize_text(get_file_text,
-                                                     filename_path)
+                        error_result = text_processing_tools.tokenize_text(get_file_text, filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
-            # Tokenize a sentence
             elif values[KEY_TOK_SENT]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_SAVE_AS]:
@@ -164,11 +142,9 @@ def main():
                     if event == KEY_OK:
                         get_file_sentence = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = tokenize_sentence(get_file_sentence,
-                                                         filename_path)
+                        error_result = text_processing_tools.tokenize_sentence(get_file_sentence, filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
-            # Remove stopwords
             elif values[KEY_STOPWORDS]:
                 main_window[KEY_SAVE_AS].update(disabled=False)
                 if values[KEY_STOPWORDS_BUT1] or values[KEY_STOPWORDS_BUT2]:
@@ -182,57 +158,34 @@ def main():
                             stopwords_language = "english"
                         elif values[KEY_STOPWORDS_BUT2]:
                             stopwords_language = "spanish"
-                        error_result = stopwords_remover(get_file_stopwords,
-                                                         filename_path,
-                                                         stopwords_language)
+                        error_result = text_processing_tools.remove_stopwords(get_file_stopwords, filename_path, stopwords_language)
                         key = "stopwords"
                         error_handling(error_result, language, key)
-            # Count total words
             elif values[KEY_TOTAL_WORDS]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_twords = values[KEY_BROWSE]
-                    error_result, function_result = total_words_count(
-                        get_file_twords)
+                    error_result, function_result = text_processing_tools.count_total_words(get_file_twords)
                     key = "total_words"
                     error_handling(error_result, language, key,
                                    function_result)
-            # Count the frequency of a specific word
             elif values[KEY_COUNT]:
                 if values[KEY_COUNT_INPUT]:
                     main_window[KEY_OK].update(disabled=False)
                     if event == KEY_OK:
                         get_file_fdist_count = values[KEY_BROWSE]
                         get_data_count = values[KEY_COUNT_INPUT]
-                        error_result, function_result = freqdist_count(
-                            get_file_fdist_count, get_data_count)
+                        error_result, function_result = text_processing_tools.count_repetitions_of_a_word(get_file_fdist_count, get_data_count)
                         key = "count"
-                        error_handling(error_result, language, key,
-                                       function_result)
-            # Check the most repeated word
+                        error_handling(error_result, language, key, function_result)
             elif values[KEY_MAX]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_fdist_max = values[KEY_BROWSE]
-                    error_result, function_result = freqdist_max(
-                        get_file_fdist_max)
+                    error_result, function_result = text_processing_tools.find_most_repeated_word(get_file_fdist_max)
                     key = "max"
-                    error_handling(error_result, language, key,
-                                   function_result)
-            # Show a graph with word's frequency
-            elif values[KEY_PLOT]:
-                if values[KEY_PLOT_INPUT]:
-                    main_window[KEY_OK].update(disabled=False)
-                    if event == KEY_OK:
-                        get_file_fdist_plot = values[KEY_BROWSE]
-                        get_data_plot = values[KEY_PLOT_INPUT]
-                        error_result, function_result = freqdist_plot(
-                            get_file_fdist_plot, get_data_plot)
-                        key = "plot"
-                        error_handling(error_result, language, key,
-                                       function_result)
+                    error_handling(error_result, language, key, function_result)
 
-        # Update window with descriptions and dropdown options
         if event == KEY_BROWSE:
             main_window[KEY_TEXT_BROWSE].update(values[KEY_BROWSE])
 
@@ -251,8 +204,7 @@ def main():
             main_window[KEY_STOPWORDS_BUT1].update(visible=True)
             main_window[KEY_STOPWORDS_BUT2].update(visible=True)
 
-        if event != KEY_STOPWORDS and event != KEY_OK and \
-                event != KEY_STOPWORDS_BUT1 and event != KEY_STOPWORDS_BUT2\
+        if event != KEY_STOPWORDS and event != KEY_OK and event != KEY_STOPWORDS_BUT1 and event != KEY_STOPWORDS_BUT2\
                 and event != KEY_BROWSE and event != KEY_SAVE_AS:
             main_window[KEY_STOPWORDS_TEXT].update(visible=False)
             main_window[KEY_STOPWORDS_BUT1].update(visible=False)
@@ -266,8 +218,7 @@ def main():
             main_window[KEY_COUNT_TEXT].update(visible=True)
             main_window[KEY_COUNT_INPUT].update(visible=True)
 
-        if event != KEY_COUNT and event != KEY_OK and event != KEY_COUNT_INPUT\
-                and event != KEY_BROWSE:
+        if event != KEY_COUNT and event != KEY_OK and event != KEY_COUNT_INPUT and event != KEY_BROWSE:
             main_window[KEY_COUNT_TEXT].update(visible=False)
             main_window[KEY_COUNT_INPUT].update(visible=False)
 
@@ -279,17 +230,12 @@ def main():
             main_window[KEY_PLOT_TEXT].update(visible=True)
             main_window[KEY_PLOT_INPUT].update(visible=True)
 
-        if event != KEY_PLOT and event != KEY_OK and event != KEY_PLOT_INPUT \
-                and event != KEY_BROWSE:
+        if event != KEY_PLOT and event != KEY_OK and event != KEY_PLOT_INPUT and event != KEY_BROWSE:
             main_window[KEY_PLOT_TEXT].update(visible=False)
             main_window[KEY_PLOT_INPUT].update(visible=False)
 
         if event == KEY_SAVE_AS:
             main_window[KEY_TEXT_SAVE_AS].update(values[KEY_SAVE_AS])
-
-# -----------------------------------------------------------------------------
-# Main
-# -----------------------------------------------------------------------------
 
 
 if __name__ == "__main__":

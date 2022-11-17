@@ -10,8 +10,7 @@ class TextProcessingToolsTest(unittest.TestCase):
 
     def test_tokenize_text(self):
         content_to_tokenize = "This is a sentence. This is a second sentence."
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
 
         actual_result = text_processing_tools.tokenize_text(content_to_tokenize)
 
@@ -19,8 +18,7 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_result, equal_to(expected_result))
 
     def test_tokenize_sentence(self):
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
         content_to_tokenize = "This is a sentence."
 
         actual_tokenized_sentence = text_processing_tools.tokenize_sentence(content_to_tokenize)
@@ -29,8 +27,7 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_tokenized_sentence, equal_to(expected_tokenized_sentence))
 
     def test_remove_stopwords(self):
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
         content_to_process = "The stopwords from this sentence will be removed"
         stopwords_language = "english"
 
@@ -40,8 +37,7 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_processed_text, equal_to(expected_processed_text))
 
     def test_count_total_words(self):
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
         content_to_process = "Testing now this method"
 
         actual_wordcount = text_processing_tools.count_total_words(content_to_process)
@@ -50,8 +46,7 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_wordcount, equal_to(expected_wordcount))
 
     def test_count_repetitions_of_a_word(self):
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
         content_to_process = "This is a test, not a potato, not a carrot"
         word_to_search_for = "a"
 
@@ -61,8 +56,7 @@ class TextProcessingToolsTest(unittest.TestCase):
         assert_that(actual_count, equal_to(expected_count))
 
     def test_find_most_repeated_word(self):
-        file_handler = FileHandler()
-        text_processing_tools = TextProcessingTools(file_handler)
+        text_processing_tools = TextProcessingTools()
         content_to_process = "This is a test, not a potato, not a carrot"
 
         actual_most_repeated_word = text_processing_tools.find_most_repeated_word(content_to_process)
