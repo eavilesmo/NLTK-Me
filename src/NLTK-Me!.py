@@ -11,12 +11,8 @@
 
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
-from src.Text_Processing_Tools import *
 from src.GUI_Constants import *
-
-# -----------------------------------------------------------------------------
-# Definition of functions
-# -----------------------------------------------------------------------------
+from src.domain.TextProcessingTools import TextProcessingTools
 
 
 def create_welcome_layout():
@@ -152,7 +148,7 @@ def main():
                     if event == KEY_OK:
                         get_file_text = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = tokenize_text(get_file_text,
+                        error_result = TextProcessingTools.tokenize_text(get_file_text,
                                                      filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
@@ -164,7 +160,7 @@ def main():
                     if event == KEY_OK:
                         get_file_sentence = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = tokenize_sentence(get_file_sentence,
+                        error_result = TextProcessingTools.tokenize_sentence(get_file_sentence,
                                                          filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
@@ -182,7 +178,7 @@ def main():
                             stopwords_language = "english"
                         elif values[KEY_STOPWORDS_BUT2]:
                             stopwords_language = "spanish"
-                        error_result = stopwords_remover(get_file_stopwords,
+                        error_result = TextProcessingTools.remove_stopwords(get_file_stopwords,
                                                          filename_path,
                                                          stopwords_language)
                         key = "stopwords"
@@ -192,7 +188,7 @@ def main():
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_twords = values[KEY_BROWSE]
-                    error_result, function_result = total_words_count(
+                    error_result, function_result = TextProcessingTools.count_total_words(
                         get_file_twords)
                     key = "total_words"
                     error_handling(error_result, language, key,
@@ -204,7 +200,7 @@ def main():
                     if event == KEY_OK:
                         get_file_fdist_count = values[KEY_BROWSE]
                         get_data_count = values[KEY_COUNT_INPUT]
-                        error_result, function_result = freqdist_count(
+                        error_result, function_result = TextProcessingTools.count_repetitions_of_a_word(
                             get_file_fdist_count, get_data_count)
                         key = "count"
                         error_handling(error_result, language, key,
@@ -214,23 +210,11 @@ def main():
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_fdist_max = values[KEY_BROWSE]
-                    error_result, function_result = freqdist_max(
+                    error_result, function_result = TextProcessingTools.find_most_repeated_word(
                         get_file_fdist_max)
                     key = "max"
                     error_handling(error_result, language, key,
                                    function_result)
-            # Show a graph with word's frequency
-            elif values[KEY_PLOT]:
-                if values[KEY_PLOT_INPUT]:
-                    main_window[KEY_OK].update(disabled=False)
-                    if event == KEY_OK:
-                        get_file_fdist_plot = values[KEY_BROWSE]
-                        get_data_plot = values[KEY_PLOT_INPUT]
-                        error_result, function_result = freqdist_plot(
-                            get_file_fdist_plot, get_data_plot)
-                        key = "plot"
-                        error_handling(error_result, language, key,
-                                       function_result)
 
         # Update window with descriptions and dropdown options
         if event == KEY_BROWSE:
