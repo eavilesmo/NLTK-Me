@@ -1,12 +1,10 @@
-from src.domain import TextProcessingTools
-from src.infrastructure import FileHandler
+from src.domain.TextProcessingTools import TextProcessingTools
+from src.infrastructure.FileHandler import FileHandler
 
 
 class Presenter:
-
-    def __init__(self, text_processing_tools: TextProcessingTools, file_handler: FileHandler):
-        self.text_processing_tools = text_processing_tools
-        self.file_handler = file_handler
+    file_handler = FileHandler()
+    text_processing_tools = TextProcessingTools()
 
     def tokenize_text(self, file, filename_path):
         content_to_tokenize = self.file_handler.read_file(file)

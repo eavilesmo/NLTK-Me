@@ -3,6 +3,7 @@ from PySimpleGUI import Column, Frame
 from src.GUI_Constants import *
 from src.domain.TextProcessingTools import TextProcessingTools
 from src.infrastructure.FileHandler import FileHandler
+from src.infrastructure.Presenter import Presenter
 
 
 def create_welcome_layout():
@@ -122,7 +123,7 @@ def main():
         main_window[KEY_OK].update(disabled=True)
         main_window[KEY_SAVE_AS].update(disabled=True)
 
-        text_processing_tools = TextProcessingTools()
+        orchestrator = Presenter()
 
         if values[KEY_BROWSE]:
             if values[KEY_TOK_TEXT]:
