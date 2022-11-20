@@ -1,8 +1,6 @@
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
 from src.GUI_Constants import *
-from src.domain.TextProcessingTools import TextProcessingTools
-from src.infrastructure.FileHandler import FileHandler
 from src.infrastructure.Executor import Executor
 
 
