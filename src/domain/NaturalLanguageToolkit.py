@@ -4,7 +4,7 @@ from nltk.tokenize.treebank import TreebankWordTokenizer
 from nltk import FreqDist
 from nltk.corpus import stopwords
 
-from src.domain.StopwordSymbols import stopword_symbols
+from src.domain.SymbolCollection import symbols
 from src.infrastructure.FileHandler import FileHandler
 
 
@@ -22,7 +22,7 @@ class NaturalLanguageToolkit:
         processed_content = []
         for word in tokenized_file:
             word = word.lower()
-            if word not in stop_words and word not in stopword_symbols:
+            if word not in stop_words and word not in symbols:
                 processed_content.append(word)
         return processed_content
 
