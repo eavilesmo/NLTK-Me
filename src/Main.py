@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
-from src.TitleCollection import *
+from src.infrastructure.presentation.TitleCollection import *
 from src.infrastructure.Executor import Executor
 
 
