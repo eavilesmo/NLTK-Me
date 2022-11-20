@@ -1,8 +1,7 @@
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
 from src.GUI_Constants import *
-from src.domain.TextProcessingTools import TextProcessingTools
-from src.infrastructure.FileHandler import FileHandler
+from src.infrastructure.Executor import Executor
 
 
 def create_welcome_layout():
@@ -122,7 +121,7 @@ def main():
         main_window[KEY_OK].update(disabled=True)
         main_window[KEY_SAVE_AS].update(disabled=True)
 
-        text_processing_tools = TextProcessingTools()
+        executor = Executor()
 
         if values[KEY_BROWSE]:
             if values[KEY_TOK_TEXT]:
@@ -132,7 +131,7 @@ def main():
                     if event == KEY_OK:
                         get_file_text = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = text_processing_tools.tokenize_text(get_file_text, filename_path)
+                        error_result = executor.tokenize_text(get_file_text, filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
             elif values[KEY_TOK_SENT]:
@@ -142,7 +141,7 @@ def main():
                     if event == KEY_OK:
                         get_file_sentence = values[KEY_BROWSE]
                         filename_path = values[KEY_SAVE_AS]
-                        error_result = text_processing_tools.tokenize_sentence(get_file_sentence, filename_path)
+                        error_result = executor.tokenize_sentence(get_file_sentence, filename_path)
                         key = "tokenize"
                         error_handling(error_result, language, key)
             elif values[KEY_STOPWORDS]:
@@ -158,14 +157,14 @@ def main():
                             stopwords_language = "english"
                         elif values[KEY_STOPWORDS_BUT2]:
                             stopwords_language = "spanish"
-                        error_result = text_processing_tools.remove_stopwords(get_file_stopwords, filename_path, stopwords_language)
+                        error_result = executor.remove_stopwords(get_file_stopwords, filename_path, stopwords_language)
                         key = "stopwords"
                         error_handling(error_result, language, key)
             elif values[KEY_TOTAL_WORDS]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_twords = values[KEY_BROWSE]
-                    error_result, function_result = text_processing_tools.count_total_words(get_file_twords)
+                    error_result, function_result = executor.count_total_words(get_file_twords)
                     key = "total_words"
                     error_handling(error_result, language, key,
                                    function_result)
@@ -175,14 +174,14 @@ def main():
                     if event == KEY_OK:
                         get_file_fdist_count = values[KEY_BROWSE]
                         get_data_count = values[KEY_COUNT_INPUT]
-                        error_result, function_result = text_processing_tools.count_repetitions_of_a_word(get_file_fdist_count, get_data_count)
+                        error_result, function_result = executor.count_repetitions_of_a_word(get_file_fdist_count, get_data_count)
                         key = "count"
                         error_handling(error_result, language, key, function_result)
             elif values[KEY_MAX]:
                 main_window[KEY_OK].update(disabled=False)
                 if event == KEY_OK:
                     get_file_fdist_max = values[KEY_BROWSE]
-                    error_result, function_result = text_processing_tools.find_most_repeated_word(get_file_fdist_max)
+                    error_result, function_result = executor.find_most_repeated_word(get_file_fdist_max)
                     key = "max"
                     error_handling(error_result, language, key, function_result)
 
