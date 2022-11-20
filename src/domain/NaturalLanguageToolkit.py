@@ -8,7 +8,7 @@ from src.domain.StopwordSymbols import stopword_symbols
 from src.infrastructure.FileHandler import FileHandler
 
 
-class TextProcessingTools:
+class NaturalLanguageToolkit:
 
     def tokenize_text(self, content_to_tokenize):
         return sent_tokenize(content_to_tokenize)

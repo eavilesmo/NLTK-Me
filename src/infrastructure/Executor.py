@@ -1,10 +1,10 @@
-from src.domain.TextProcessingTools import TextProcessingTools
+from src.domain.NaturalLanguageToolkit import NaturalLanguageToolkit
 from src.infrastructure.FileHandler import FileHandler
 
 
 class Executor:
     file_handler = FileHandler()
-    text_processing_tools = TextProcessingTools()
+    text_processing_tools = NaturalLanguageToolkit()
 
     def tokenize_text(self, filepath_to_read, filepath_to_save):
         content_to_tokenize = self.file_handler.read_file(filepath_to_read)
