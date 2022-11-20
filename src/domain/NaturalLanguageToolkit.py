@@ -1,43 +1,40 @@
-from nltk.tokenize import sent_tokenize
-from nltk import word_tokenize
+from nltk.tokenize import sent_tokenize as sentence_tokenizer
+from nltk import word_tokenize as word_tokenizer
 from nltk.tokenize.treebank import TreebankWordTokenizer
 from nltk import FreqDist
 from nltk.corpus import stopwords
 
 from src.domain.PunctuationMarkCollection import punctuation_mark_collection
-from src.infrastructure.FileHandler import FileHandler
 
 
 class NaturalLanguageToolkit:
 
-    def tokenize_text(self, content_to_tokenize):
-        return sent_tokenize(content_to_tokenize)
+    def tokenize_text(self, content_to_process):
+        return sentence_tokenizer(content_to_process)
 
-    def tokenize_sentence(self, content_to_tokenize):
-        return word_tokenize(content_to_tokenize)
+    def tokenize_sentence(self, content_to_process):
+        return word_tokenizer(content_to_process)
 
     def remove_stopwords(self, content_to_process, language):
-        stop_words = set(stopwords.words(language))
-        tokenized_file = word_tokenize(content_to_process)
-        processed_content = []
-        for word in tokenized_file:
+        stopword_collection = set(stopwords.words(language))
+        tokenized_content = word_tokenizer(content_to_process)
+        output_content = []
+        for word in tokenized_content:
             word = word.lower()
-            if word not in stop_words and word not in punctuation_mark_collection:
-                processed_content.append(word)
-        return processed_content
+            if word not in stopword_collection and word not in punctuation_mark_collection:
+                output_content.append(word)
+        return output_content
 
     def count_total_words(self, content_to_process):
-        tokenized_content = word_tokenize(content_to_process)
+        tokenized_content = word_tokenizer(content_to_process)
         total_words = len(tokenized_content)
         return total_words
 
     def count_repetitions_of_a_word(self, content_to_process, word_to_search_for):
-        processed_content = content_to_process.lower()
         tokenizer = TreebankWordTokenizer()
-        tokenized_content = tokenizer.tokenize(processed_content)
+        tokenized_content = tokenizer.tokenize(content_to_process.lower())
         frequency_distributor = FreqDist(tokenized_content)
-        word_to_search_for = word_to_search_for.lower()
-        number_of_repetitions = frequency_distributor[word_to_search_for]
+        number_of_repetitions = frequency_distributor[word_to_search_for.lower()]
         return number_of_repetitions
 
     def find_most_repeated_word(self, content_to_process):
