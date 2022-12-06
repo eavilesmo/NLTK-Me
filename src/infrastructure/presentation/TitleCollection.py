@@ -1,40 +1,28 @@
-# -----------------------------------------------------------------------------
-# Description of the file
-# -----------------------------------------------------------------------------
-
-# The GUI_Constants file contains all the constants, variables and
-# dictionaries needed for the GUI.
-
-# -----------------------------------------------------------------------------
-
-# Miscellaneous
-SG_THEME = "LightBlue3"
-TITLE_WIN = "NLTK-Me!"
-WELCOME_TEXT_EN = "Hello! Welcome to NLTK-Me!\n" \
+PYSIMPLEGUI_THEME = "LightBlue3"
+WINDOW_TITLE = "NLTK-Me!"
+WELCOME_TEXT_ENGLISH = "Hello! Welcome to NLTK-Me!\n" \
                   "Which language would you like to choose?"
-WELCOME_TEXT_ES = "¡Hola! Te damos la bienvenida a NLTK-Me!\n" \
+WELCOME_TEXT_SPANISH = "¡Hola! Te damos la bienvenida a NLTK-Me!\n" \
                   "¿Qué idioma quieres escoger?"
-ENG_BUT = "English"
-ENG_BUT_KEY = "EN_lang"
-SPA_BUT = "Español"
-SPA_BUT_KEY = "ES_lang"
+ENGLISH_BUTTON = "English"
+ENGLISH_BUTTON_KEY = "EN_lang"
+SPANISH_BUTTON = "Español"
+SPANISH_BUTTON_KEY = "ES_lang"
 
-# Size of elements
-SIZE_BUTTON = (6, 1)
-SIZE_TEXT_L = (34, 1)
-SIZE_TEXT_S = (6, 2)
+BUTTON_SIZE = (6, 1)
+TEXT_SIZE_L = (34, 1)
+TEXT_SIZE_S = (6, 2)
 SIZE_INFORMATION = (25, 17)
 
-# Key names for the elements
 KEY_BROWSE = "browse"
 KEY_TEXT_BROWSE = "text_browse"
-FILE_TYPES = (("Text Files", "*.txt"),)
-KEY_TOK_TEXT = "tok_text"
-KEY_TOK_SENT = "tok_sentence"
+FILE_TYPE = (("Text Files", "*.txt"),)
+KEY_TOKENIZE_TEXT = "tok_text"
+KEY_TOKENIZE_SENTENCE = "tok_sentence"
 KEY_STOPWORDS = "stopwords"
 KEY_STOPWORDS_TEXT = "stopwords_text"
-KEY_STOPWORDS_BUT1 = "stopwords_but1"
-KEY_STOPWORDS_BUT2 = "stopwords_but2"
+KEY_STOPWORDS_BUTTON_1 = "stopwords_but1"
+KEY_STOPWORDS_BUTTON_2 = "stopwords_but2"
 KEY_TOTAL_WORDS = "total_words"
 KEY_COUNT = "fdist01"
 KEY_COUNT_TEXT = "fdist01_text"
@@ -49,9 +37,7 @@ KEY_OK = "OK"
 KEY_INFORMATION = "information"
 
 
-# Dictionary for making the GUI bilingual
-dict_EN = {
-    # Descriptions
+english_dictionary = {
     "general_description": "Welcome to NLTK-Me!\nThis is a program based "
                            "on the NLTK library for Python.",
     "info_frame_description": "When you click on an option from the list, you "
@@ -109,7 +95,6 @@ dict_EN = {
     "text_save_as": "Please choose a path to save your file",
     "stopwords_lang_description": "Please select the language of your text:",
 
-    # Errors
     "unicode_error": "The program is not able to work with your file due "
                      "to its encoding.\nPlease change the encoding of your "
                      "file before trying again.",
@@ -117,13 +102,11 @@ dict_EN = {
     "path_error": "The path you introduced is not correct. Please try again.",
     "empty_file_error": "The file you introduced is empty! Please try again.",
 
-    # Frames
     "information_frame": "Information",
     "select_file_frame": "Select your file",
     "choose_option_frame": "What would you like to do?",
     "save_as_frame": "Save your file",
 
-    # Buttons
     "button_browse": "Browse",
     "button_ok": "Go!",
     "button_tok_text": "Tokenize a text",
@@ -138,8 +121,7 @@ dict_EN = {
     "button_save_as": "Save as"
 }
 
-dict_ES = {
-    # Descriptions
+spanish_dictionary = {
     "general_description": "¡Bienvenido/a a NLTK-Me!\nUn programa basado en "
                            "la librería NLTK para Python.",
     "info_frame_description": "Cuando hagas clic sobre una opción, aquí verás "
@@ -200,7 +182,6 @@ dict_ES = {
     "text_save_as": "Elige dónde guardar tu archivo",
     "stopwords_lang_description": "Selecciona el idioma de tu texto:",
 
-    # Errors
     "unicode_error": "El programa no puede trabajar con tu archivo debido a "
                      "su codificación.\nCambia la codificación del archivo "
                      "antes de intentarlo de nuevo.",
@@ -209,13 +190,11 @@ dict_ES = {
     "empty_file_error": "¡El archivo que has escogido está vacío! "
                         "Inténtalo de nuevo.",
 
-    # Frames
     "information_frame": "Información",
     "select_file_frame": "Selecciona un archivo",
     "choose_option_frame": "¿Qué te gustaría hacer?",
     "save_as_frame": "Guarda tu archivo",
 
-    # Buttons
     "button_browse": "Buscar",
     "button_ok": "¡Vamos!",
     "button_tok_text": "Tokenizar un texto",
