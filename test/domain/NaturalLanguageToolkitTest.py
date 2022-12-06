@@ -1,8 +1,7 @@
 import unittest
-from doublex import Stub, assert_that, when, ANY_ARG
+from doublex import assert_that
 from hamcrest import equal_to
 
-from src.infrastructure.FileHandler import FileHandler
 from src.domain.NaturalLanguageToolkit import NaturalLanguageToolkit
 
 
