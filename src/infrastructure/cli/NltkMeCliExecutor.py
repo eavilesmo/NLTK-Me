@@ -1,4 +1,7 @@
-class NltkMeCliExecutor():
+from src.infrastructure.cli.CliPresenter import CliPresenter
+
+
+class NltkMeCliExecutor:
 
     def show_introduction(self):
         cli_presenter = CliPresenter()
@@ -6,9 +9,7 @@ class NltkMeCliExecutor():
 
     def choose_action(self):
         cli_presenter = CliPresenter()
-        user_option = cli_presenter.choose_action()
+        user_option = cli_presenter.show_options()
         if user_option == 1:
             cli_presenter.tokenize_text()
-        elif user_option == 2:
-            cli_presenter.tokenize_sentence()
 
