@@ -1,5 +1,5 @@
 from src.domain.NaturalLanguageToolkit import NaturalLanguageToolkit
-from src.infrastructure.gui.FileHandler import FileHandler
+from src.infrastructure.FileHandler import FileHandler
 
 
 class CliPresenter:
