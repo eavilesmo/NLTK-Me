@@ -19,5 +19,6 @@ class CliPresenter:
         content_to_process = file_handler.read(file_path)
         natural_language_toolkit = NaturalLanguageToolkit()
         processed_content = natural_language_toolkit.tokenize_text(content_to_process)
-        output_file_path = "filepath"
+        output_file_path = "/home/eaviles/Desktop/processed.txt"
         file_handler.write(output_file_path, processed_content)
+        print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
