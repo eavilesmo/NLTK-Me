@@ -65,4 +65,10 @@ class CliPresenter:
         print("Done! The word " + word_to_search_for + " appears " + str(number_of_repetitions) + " times.")
 
     def find_most_repeated_word(self):
-        print()
+        print("Let's find the most repeated word! Please introduce the path to the file you want to process.")
+        file_path = input("Path to file: ")
+        file_handler = FileHandler()
+        content_to_process = file_handler.read(file_path)
+        natural_language_toolkit = NaturalLanguageToolkit()
+        most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
+        print("We found it! The most repeated word is: " + most_repeated_word)
