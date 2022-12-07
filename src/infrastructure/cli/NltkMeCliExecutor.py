@@ -28,5 +28,3 @@ class NltkMeCliExecutor:
             self.cli_presenter.count_repetitions_of_a_word()
         elif user_option == "6":
             self.cli_presenter.find_most_repeated_word()
-
-
