@@ -18,4 +18,8 @@ class NltkMeCliExecutor:
             cli_presenter.remove_stopwords()
         elif user_option == "4":
             cli_presenter.count_total_words()
+        elif user_option == "5":
+            cli_presenter.count_repetitions_of_a_word()
+        elif user_option == "6":
+            cli_presenter.find_most_repeated_word()
 

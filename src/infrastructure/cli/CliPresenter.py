@@ -53,3 +53,16 @@ class CliPresenter:
         natural_language_toolkit = NaturalLanguageToolkit()
         total_words = natural_language_toolkit.count_total_words(content_to_process)
         print("Great! Your file has " + str(total_words) + " words.")
+
+    def count_repetitions_of_a_word(self):
+        print("Let's count how many times a word is repeated! Please introduce the path to the file you want to process.")
+        file_path = input("Path to file: ")
+        file_handler = FileHandler()
+        content_to_process = file_handler.read(file_path)
+        natural_language_toolkit = NaturalLanguageToolkit()
+        word_to_search_for = input("Now, please introduce the word you want to search for: ")
+        number_of_repetitions = natural_language_toolkit.count_repetitions_of_a_word(content_to_process, word_to_search_for)
+        print("Done! The word " + word_to_search_for + " appears " + str(number_of_repetitions) + " times.")
+
+    def find_most_repeated_word(self):
+        print()
