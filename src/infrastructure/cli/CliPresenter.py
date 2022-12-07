@@ -44,3 +44,12 @@ class CliPresenter:
         output_file_path = "/home/eaviles/Desktop/processed.txt"
         file_handler.write(output_file_path, processed_content)
         print("Great! Your text has been processed! We have saved the output file here:\n" + output_file_path)
+
+    def count_total_words(self):
+        print("Let's count words! Please introduce the path to the file you want to process.")
+        file_path = input("Path to file: ")
+        file_handler = FileHandler()
+        content_to_process = file_handler.read(file_path)
+        natural_language_toolkit = NaturalLanguageToolkit()
+        total_words = natural_language_toolkit.count_total_words(content_to_process)
+        print("Great! Your file has " + str(total_words) + " words.")
