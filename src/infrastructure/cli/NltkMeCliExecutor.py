@@ -14,4 +14,6 @@ class NltkMeCliExecutor:
             cli_presenter.tokenize_text()
         elif user_option == "2":
             cli_presenter.tokenize_sentence()
+        elif user_option == "3":
+            cli_presenter.remove_stopwords()
 
