@@ -12,4 +12,6 @@ class NltkMeCliExecutor:
         user_option = cli_presenter.show_options()
         if user_option == "1":
             cli_presenter.tokenize_text()
+        elif user_option == "2":
+            cli_presenter.tokenize_sentence()
 

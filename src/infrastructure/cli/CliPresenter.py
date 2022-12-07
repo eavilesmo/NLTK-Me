@@ -22,3 +22,14 @@ class CliPresenter:
         output_file_path = "/home/eaviles/Desktop/processed.txt"
         file_handler.write(output_file_path, processed_content)
         print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
+
+    def tokenize_sentence(self):
+        print("Let's tokenize some sentences! Please introduce the path to the file you want to tokenize.")
+        file_path = input("Path to file: ")
+        file_handler = FileHandler()
+        content_to_process = file_handler.read(file_path)
+        natural_language_toolkit = NaturalLanguageToolkit()
+        processed_content = natural_language_toolkit.tokenize_sentence(content_to_process)
+        output_file_path = "/home/eaviles/Desktop/processed.txt"
+        file_handler.write(output_file_path, processed_content)
+        print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
