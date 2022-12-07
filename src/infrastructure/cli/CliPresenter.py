@@ -11,7 +11,12 @@ class CliPresenter:
 
     def show_options(self):
         print("1. Tokenize a text")
-        user_option = input("Select an option: ")
+        print("2. Tokenize a sentence")
+        print("3. Remove stopwords")
+        print("4. Count the total words of a text")
+        print("5. Count how many times a word appears in a text")
+        print("6. Find the most repeated word in a text")
+        user_option = input("Introduce a number to select an option: ")
         return user_option
 
     def tokenize_text(self):
@@ -62,6 +67,9 @@ class CliPresenter:
         natural_language_toolkit = NaturalLanguageToolkit()
         most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
         print("We found it! The most repeated word is: " + most_repeated_word)
+
+    def display_option_not_valid_dialogue(self):
+        print("Sorry, the option you introduced is not correct. Please try again.")
 
     def extract_content_from_file(self):
         file_path = input("Path to file: ")
