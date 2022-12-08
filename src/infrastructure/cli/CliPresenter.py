@@ -22,29 +22,38 @@ class CliPresenter:
     def tokenize_text(self):
         print("Let's tokenize a text! Please introduce the path to the file you want to tokenize.")
         content_to_process = self.extract_content_from_file()
-        natural_language_toolkit = NaturalLanguageToolkit()
-        processed_content = natural_language_toolkit.tokenize_text(content_to_process)
-        output_file_path = "/home/eaviles/Desktop/processed.txt"
-        self.file_handler.write(output_file_path, processed_content)
-        print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
+        if len(content_to_process) != 0:
+            natural_language_toolkit = NaturalLanguageToolkit()
+            processed_content = natural_language_toolkit.tokenize_text(content_to_process)
+            output_file_path = "/home/eaviles/Desktop/processed.txt"
+            self.file_handler.write(output_file_path, processed_content)
+            print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
+        else:
+            print("The file is empty!")
 
     def tokenize_sentence(self):
         print("Let's tokenize some sentences! Please introduce the path to the file you want to tokenize.")
         content_to_process = self.extract_content_from_file()
-        natural_language_toolkit = NaturalLanguageToolkit()
-        processed_content = natural_language_toolkit.tokenize_sentence(content_to_process)
-        output_file_path = "/home/eaviles/Desktop/processed.txt"
-        self.file_handler.write(output_file_path, processed_content)
-        print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
+        if len(content_to_process) != 0:
+            natural_language_toolkit = NaturalLanguageToolkit()
+            processed_content = natural_language_toolkit.tokenize_sentence(content_to_process)
+            output_file_path = "/home/eaviles/Desktop/processed.txt"
+            self.file_handler.write(output_file_path, processed_content)
+            print("Great! Your text has been tokenized! We have saved the output file here:\n" + output_file_path)
+        else:
+            print("The file is empty!")
 
     def remove_stopwords(self):
         print("Let's remove stopwords! Please introduce the path to the file you want to process.")
         content_to_process = self.extract_content_from_file()
-        natural_language_toolkit = NaturalLanguageToolkit()
-        processed_content = natural_language_toolkit.remove_stopwords(content_to_process, "spanish")
-        output_file_path = "/home/eaviles/Desktop/processed.txt"
-        self.file_handler.write(output_file_path, processed_content)
-        print("Great! Your text has been processed! We have saved the output file here:\n" + output_file_path)
+        if len(content_to_process) != 0:
+            natural_language_toolkit = NaturalLanguageToolkit()
+            processed_content = natural_language_toolkit.remove_stopwords(content_to_process, "spanish")
+            output_file_path = "/home/eaviles/Desktop/processed.txt"
+            self.file_handler.write(output_file_path, processed_content)
+            print("Great! Your text has been processed! We have saved the output file here:\n" + output_file_path)
+        else:
+            print("The file is empty!")
 
     def count_total_words(self):
         print("Let's count words! Please introduce the path to the file you want to process.")
@@ -56,17 +65,23 @@ class CliPresenter:
     def count_repetitions_of_a_word(self):
         print("Let's count how many times a word is repeated! Please introduce the path to the file you want to process.")
         content_to_process = self.extract_content_from_file()
-        natural_language_toolkit = NaturalLanguageToolkit()
-        word_to_search_for = input("Now, please introduce the word you want to search for: ")
-        number_of_repetitions = natural_language_toolkit.count_repetitions_of_a_word(content_to_process, word_to_search_for)
-        print("Done! The word " + word_to_search_for + " appears " + str(number_of_repetitions) + " times.")
+        if len(content_to_process) != 0:
+            natural_language_toolkit = NaturalLanguageToolkit()
+            word_to_search_for = input("Now, please introduce the word you want to search for: ")
+            number_of_repetitions = natural_language_toolkit.count_repetitions_of_a_word(content_to_process, word_to_search_for)
+            print("Done! The word " + word_to_search_for + " appears " + str(number_of_repetitions) + " times.")
+        else:
+            print("The file is empty!")
 
     def find_most_repeated_word(self):
         print("Let's find the most repeated word! Please introduce the path to the file you want to process.")
         content_to_process = self.extract_content_from_file()
-        natural_language_toolkit = NaturalLanguageToolkit()
-        most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
-        print("We found it! The most repeated word is: " + most_repeated_word)
+        if len(content_to_process) != 0:
+            natural_language_toolkit = NaturalLanguageToolkit()
+            most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
+            print("We found it! The most repeated word is: " + most_repeated_word)
+        else:
+            print("The file is empty!")
 
     def display_option_not_valid_dialogue(self):
         print("Sorry, the option you introduced is not correct. Please try again.")
