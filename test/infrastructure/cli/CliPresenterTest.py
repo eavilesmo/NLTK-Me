@@ -10,3 +10,8 @@ def test_show_introduction(capsys):
     assert captured.out == expected_output
 
 
+def test_show_options(monkeypatch):
+    monkeypatch.setattr("sys.stdin", "2")
+    selected_option = cli_presenter.show_options()
+    assert selected_option == "2"
+
