@@ -16,6 +16,7 @@ class CliPresenter:
         print("4. Count the total words of a text")
         print("5. Count how many times a word appears in a text")
         print("6. Find the most repeated word in a text")
+        print("7. Close the program")
         user_option = input("Introduce a number to select an option: ")
         return user_option
 
@@ -87,9 +88,16 @@ class CliPresenter:
             print("The file is empty or was not found!")
 
     def display_option_not_valid_dialogue(self):
-        print("Sorry, the option you introduced is not correct. Please try again.")
+        print("\nSorry, the option you introduced is not correct. Please try again.")
 
     def extract_content_from_file(self):
         file_path = input("Path to file: ")
         content_to_process = self.file_handler.read(file_path)
         return content_to_process
+
+    def ask_user_what_to_do_next(self):
+        print("What would you like to do next?")
+        self.show_options()
+
+    def display_close_program_message(self):
+        print("Thank you! Have a good day! :)")
