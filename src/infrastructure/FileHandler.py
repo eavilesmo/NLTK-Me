@@ -1,7 +1,10 @@
 class FileHandler:
 
     def read(self, input_file):
-        return open(input_file, encoding="UTF-8").read()
+        try:
+            return open(input_file, encoding="UTF-8").read()
+        except FileNotFoundError:
+            return ""
 
     def write(self, file_path, processed_content):
         with open(file_path, "w") as output_file:

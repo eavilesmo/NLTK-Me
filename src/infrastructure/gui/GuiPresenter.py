@@ -1,7 +1,6 @@
 import PySimpleGUI as sg
 from PySimpleGUI import Column, Frame
-from src.infrastructure.presentation.TitleCollection import *
-from src.infrastructure.Executor import Executor
+from src.infrastructure.gui.NltkMeGuiExecutor import Executor
 
 
 def create_welcome_layout():
