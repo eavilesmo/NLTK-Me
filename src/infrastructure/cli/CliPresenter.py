@@ -97,7 +97,6 @@ class CliPresenter:
 
     def ask_user_what_to_do_next(self):
         print("What would you like to do next?")
-        self.show_options()
 
     def display_close_program_message(self):
         print("Thank you! Have a good day! :)")
