@@ -17,6 +17,7 @@ class CliPresenter:
         print("5. Count how many times a word appears in a text")
         print("6. Find the most repeated word in a text")
         print("7. Close the program")
+        print("Do you want to know more about the different options? Just type 'info'!")
         user_option = input("Introduce a number to select an option: ")
         return user_option
 
@@ -99,4 +100,16 @@ class CliPresenter:
         print("What would you like to do next?")
 
     def display_close_program_message(self):
-        print("Thank you! Have a good day! :)")
+        print("\nThank you! Have a good day! :)")
+        print("\nNLTK-Me! CLI Version\nCreated by Macarena Avilés")
+
+    def display_information(self):
+        print("\n----------------------------------")
+        print("Did you ask for some info? Here you go!")
+        print("1. Tokenize a text: With Text Tokenizer, you can tokenize (split) a text into sentences. The text is split based on full stops. This option will create a file named 'processed.txt' in your desktop that will contain the result.")
+        print("2. Tokenize a sentence: With Sentence Tokenizer, you can tokenize (split) a sentence into words. The sentences are split based on spaces. This option will create a file named 'processed.txt' in your desktop that will contain the result.")
+        print("3. Remove stopwords: This function removes the stopwords from a text. This means that all words with no meaning in the text (as articles, prepositions or punctuation marks) will be removed from the text. This option will create a file named 'processed.txt' in your desktop that will contain the result.")
+        print("4. Count the total words of a text: This function shows how many words are in the text. The result will be printed in the console.")
+        print("5. Count how many times a word appears in a text: This function shows how many times a word appears in the text. The result will be printed in the console. lease note this function isn't case sensitive, which means that it differentiate between capital or lower-case letters.")
+        print("6. Find the most repeated word in a text: This function simply shows the most repeated word in the text! The result will be printed in the console. It's recommended to first execute the function 'Remove stopwords' in the file to avoid getting strange results (for instance, getting articles, pronouns or even punctuation marks as the most frequent word.)")
+        print("----------------------------------\n")

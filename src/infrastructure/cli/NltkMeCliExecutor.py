@@ -14,7 +14,7 @@ class NltkMeCliExecutor:
 
     def interpret_user_input(self, user_option):
         # Replace valid_user_options with a range instead
-        valid_user_options = ["1", "2", "3", "4", "5", "6", "7"]
+        valid_user_options = ["1", "2", "3", "4", "5", "6", "7", "info"]
         while user_option not in valid_user_options:
             self.cli_presenter.display_option_not_valid_dialogue()
             self.cli_presenter.show_options()
@@ -45,3 +45,6 @@ class NltkMeCliExecutor:
             self.interpret_user_input(user_input)
         elif user_option == "7":
             self.cli_presenter.display_close_program_message()
+        elif user_option == "info":
+            self.cli_presenter.display_information()
+            self.choose_action()
