@@ -18,7 +18,6 @@ class NltkMeCliExecutor:
             self.cli_presenter.display_option_not_valid_dialogue()
             self.cli_presenter.show_options()
 
-        # Replace with a switch statement?
         if user_option == tokenize_text:
             self.cli_presenter.tokenize_text()
             self.cli_presenter.ask_user_what_to_do_next()
