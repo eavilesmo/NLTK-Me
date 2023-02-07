@@ -1,6 +1,24 @@
 welcome_message = "Welcome to NLTK-Me!\nWhat would you like to do?"
 next_option_message = "What would you like to do next?"
 
+tokenize_text = "1"
+tokenize_sentence = "2"
+remove_stopwords = "3"
+count_total_words = "4"
+count_repetitions_of_a_word = "5"
+find_most_repeated_word = "6"
+close_program = "7"
+information = "info"
+
+valid_user_options = [tokenize_text,
+                      tokenize_sentence,
+                      remove_stopwords,
+                      count_total_words,
+                      count_repetitions_of_a_word,
+                      find_most_repeated_word,
+                      close_program,
+                      information]
+
 tokenize_text_option = "1. Tokenize a text"
 tokenize_sentence_option = "2. Tokenize a sentence"
 remove_stopwords_option = "3. Remove stopwords"
@@ -28,6 +46,10 @@ count_repetitions_info = "5. Count how many times a word appears in a text: This
 most_repeated_word_info = "6. Find the most repeated word in a text: This function simply shows the most repeated word in the text! The result will be printed in the console. It's recommended to first execute the function 'Remove stopwords' in the file to avoid getting strange results (for instance, getting articles, pronouns or even punctuation marks as the most frequent word.)"
 
 tokenize_file_succeeded = "Great! Your text has been tokenized! We have saved the output file here:\n"
+remove_stopwords_succeeded = "Great! Your text has been processed! We have saved the output file here:\n"
+count_total_words_succeeded = "Great! Your file has %s words."
+count_repetitions_succeeded = "Done! The word %s appears %s times."
+most_repeated_word_succeeded = "We found it! The most repeated word is: "
 
 file_empty_or_not_found = "The file is empty or was not found!"
 invalid_option_message = "\nSorry, the option you introduced is not correct. Please try again."

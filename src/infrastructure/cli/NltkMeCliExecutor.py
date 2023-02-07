@@ -1,4 +1,5 @@
 from src.infrastructure.cli.CliPresenter import CliPresenter
+from src.infrastructure.cli.ApplicationMessages import *
 
 
 class NltkMeCliExecutor:
@@ -13,38 +14,37 @@ class NltkMeCliExecutor:
         self.interpret_user_input(user_option)
 
     def interpret_user_input(self, user_option):
-        # Replace valid_user_options with a range instead
-        valid_user_options = ["1", "2", "3", "4", "5", "6", "7", "info"]
         while user_option not in valid_user_options:
             self.cli_presenter.display_option_not_valid_dialogue()
             self.cli_presenter.show_options()
 
-        if user_option == "1":
+        # Replace with a switch statement?
+        if user_option == tokenize_text:
             self.cli_presenter.tokenize_text()
             self.cli_presenter.ask_user_what_to_do_next()
             self.choose_action()
-        elif user_option == "2":
+        elif user_option == tokenize_sentence:
             self.cli_presenter.tokenize_sentence()
             self.cli_presenter.ask_user_what_to_do_next()
             self.choose_action()
-        elif user_option == "3":
+        elif user_option == remove_stopwords:
             self.cli_presenter.remove_stopwords()
             self.cli_presenter.ask_user_what_to_do_next()
             self.choose_action()
-        elif user_option == "4":
+        elif user_option == count_total_words:
             self.cli_presenter.count_total_words()
             self.cli_presenter.ask_user_what_to_do_next()
             self.choose_action()
-        elif user_option == "5":
+        elif user_option == count_repetitions_of_a_word:
             self.cli_presenter.count_repetitions_of_a_word()
             self.cli_presenter.ask_user_what_to_do_next()
             self.choose_action()
-        elif user_option == "6":
+        elif user_option == find_most_repeated_word:
             self.cli_presenter.find_most_repeated_word()
             user_input = self.cli_presenter.ask_user_what_to_do_next()
             self.interpret_user_input(user_input)
-        elif user_option == "7":
+        elif user_option == close_program:
             self.cli_presenter.display_close_program_message()
-        elif user_option == "info":
+        elif user_option == information:
             self.cli_presenter.display_information()
             self.choose_action()

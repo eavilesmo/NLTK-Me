@@ -54,7 +54,7 @@ class CliPresenter:
             processed_content = natural_language_toolkit.remove_stopwords(content_to_process, "spanish")
             output_file_path = "/home/eaviles/Desktop/processed.txt"
             self.file_handler.write(output_file_path, processed_content)
-            print("Great! Your text has been processed! We have saved the output file here:\n" + output_file_path)
+            print(remove_stopwords_succeeded, output_file_path)
         else:
             print(file_empty_or_not_found)
 
@@ -64,7 +64,7 @@ class CliPresenter:
         if len(content_to_process) != 0:
             natural_language_toolkit = NaturalLanguageToolkit()
             total_words = natural_language_toolkit.count_total_words(content_to_process)
-            print("Great! Your file has " + str(total_words) + " words.")
+            print(count_total_words_succeeded % str(total_words))
         else:
             print(file_empty_or_not_found)
 
@@ -75,7 +75,7 @@ class CliPresenter:
             natural_language_toolkit = NaturalLanguageToolkit()
             word_to_search_for = input(count_repetitions_input_message)
             number_of_repetitions = natural_language_toolkit.count_repetitions_of_a_word(content_to_process, word_to_search_for)
-            print("Done! The word " + word_to_search_for + " appears " + str(number_of_repetitions) + " times.")
+            print(count_repetitions_succeeded % (word_to_search_for, str(number_of_repetitions)))
         else:
             print(file_empty_or_not_found)
 
@@ -85,7 +85,7 @@ class CliPresenter:
         if len(content_to_process) != 0:
             natural_language_toolkit = NaturalLanguageToolkit()
             most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
-            print("We found it! The most repeated word is: " + most_repeated_word)
+            print(most_repeated_word_succeeded, most_repeated_word)
         else:
             print(file_empty_or_not_found)
 
