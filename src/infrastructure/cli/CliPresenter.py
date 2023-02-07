@@ -31,6 +31,7 @@ class CliPresenter:
             output_file_path = "/home/eaviles/Desktop/processed.txt"
             self.file_handler.write(output_file_path, processed_content)
             print(tokenize_file_succeeded, output_file_path)
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
@@ -43,6 +44,7 @@ class CliPresenter:
             output_file_path = "/home/eaviles/Desktop/processed.txt"
             self.file_handler.write(output_file_path, processed_content)
             print(tokenize_file_succeeded, output_file_path)
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
@@ -55,6 +57,7 @@ class CliPresenter:
             output_file_path = "/home/eaviles/Desktop/processed.txt"
             self.file_handler.write(output_file_path, processed_content)
             print(remove_stopwords_succeeded, output_file_path)
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
@@ -65,6 +68,7 @@ class CliPresenter:
             natural_language_toolkit = NaturalLanguageToolkit()
             total_words = natural_language_toolkit.count_total_words(content_to_process)
             print(count_total_words_succeeded % str(total_words))
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
@@ -76,6 +80,7 @@ class CliPresenter:
             word_to_search_for = input(count_repetitions_input_message)
             number_of_repetitions = natural_language_toolkit.count_repetitions_of_a_word(content_to_process, word_to_search_for)
             print(count_repetitions_succeeded % (word_to_search_for, str(number_of_repetitions)))
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
@@ -86,6 +91,7 @@ class CliPresenter:
             natural_language_toolkit = NaturalLanguageToolkit()
             most_repeated_word = natural_language_toolkit.find_most_repeated_word(content_to_process)
             print(most_repeated_word_succeeded, most_repeated_word)
+            self.ask_user_what_to_do_next()
         else:
             print(file_empty_or_not_found)
 
